@@ -22,16 +22,16 @@
             _headerSettings = headerSettings ?? throw new ArgumentException(nameof(headerSettings));
         }
 
-        [HttpPost]
-        public async Task<HttpResponseMessage> AddAuthorToBook([FromUri] Guid authorId, [FromUri] Guid bookId)
+        [HttpPost("{authorId},{bookId}")]
+        public async Task<HttpResponseMessage> AddAuthorToBook(Guid authorId, Guid bookId)
         {
             var result = await _bookService.AddAuthorForBook(authorId, bookId);
 
             return result.CreateRespose(HttpStatusCode.OK, HttpStatusCode.NoContent);
         }
 
-        [HttpDelete]
-        public async Task<HttpResponseMessage> RemoveAuthorFromBook([FromUri] Guid authorId, [FromUri] Guid bookId)
+        [HttpDelete("{authorId},{bookId}")]
+        public async Task<HttpResponseMessage> RemoveAuthorFromBook(Guid authorId, Guid bookId)
         {
             var result = await _bookService.RemoveAuthorFromBook(authorId, bookId);
 
@@ -65,8 +65,8 @@
             return result.CreateRespose(HttpStatusCode.OK, HttpStatusCode.NoContent);
         }
 
-        [HttpDelete]
-        public async Task<HttpResponseMessage> Delete([FromUri] Guid id)
+        [HttpDelete("{id}")]
+        public async Task<HttpResponseMessage> Delete(Guid id)
         {
             var result = await _bookService.RemoveBook(id);
 
