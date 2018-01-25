@@ -1,4 +1,4 @@
-﻿namespace brief.Controllers.Controllers.BaseControllers
+﻿namespace briefCore.Controllers.Controllers.BaseControllers
 {
     using System;
     using System.Collections.Generic;
@@ -7,10 +7,8 @@
     using System.Net;
     using System.Net.Http;
     using System.Threading.Tasks;
-    using System.Web.Http;
-    using Helpers;
-    using Models.BaseEntities;
-    using StreamProviders;
+    using brief.Controllers.Helpers;
+    using brief.Controllers.Models.BaseEntities;
 
     public abstract class BaseFileUploadController : Controller
     {

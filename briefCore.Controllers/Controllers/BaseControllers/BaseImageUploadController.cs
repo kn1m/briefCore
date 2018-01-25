@@ -1,6 +1,4 @@
-﻿using briefCore.Controllers.Extensions;
-
-namespace brief.Controllers.Controllers.BaseControllers
+﻿namespace briefCore.Controllers.Controllers.BaseControllers
 {
     using System;
     using System.Collections.Generic;
@@ -9,16 +7,15 @@ namespace brief.Controllers.Controllers.BaseControllers
     using System.Net;
     using System.Net.Http;
     using System.Threading.Tasks;
-    using System.Web;
-    using System.Web.Http;
+    using brief.Controllers.Helpers;
+    using brief.Controllers.Models;
+    using brief.Controllers.Models.BaseEntities;
     using Extensions;
-    using Helpers;
     using Helpers.Base;
-    using Models;
-    using Models.BaseEntities;
+    using Microsoft.AspNetCore.Mvc;
     using StreamProviders;
 
-    public abstract class BaseImageUploadController : ApiController
+    public abstract class BaseImageUploadController : Controller
     {
         private readonly IFileSystem _fileSystem;
 
@@ -126,7 +123,7 @@ namespace brief.Controllers.Controllers.BaseControllers
 
                 var result = await strategy.Invoke(imageToSave);
 
-                return result.CreateRespose(Request, HttpStatusCode.Created, HttpStatusCode.BadRequest);
+                return result.CreateRespose(HttpStatusCode.Created, HttpStatusCode.BadRequest);
             }
             catch (Exception e)
             {

@@ -34,8 +34,8 @@
             return result.CreateRespose(HttpStatusCode.OK, HttpStatusCode.NoContent);
         }
 
-        [HttpDelete]
-        public async Task<HttpResponseMessage> Delete([FromUri] Guid id)
+        [HttpDelete("{id}")]
+        public async Task<HttpResponseMessage> Delete(Guid id)
         {
             var result = await _publisherService.RemovePublisher(id);
 

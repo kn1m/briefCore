@@ -1,18 +1,16 @@
-﻿using briefCore.Controllers.Extensions;
-
-namespace brief.Controllers.Controllers
+﻿namespace briefCore.Controllers.Controllers
 {
     using System;
     using System.IO.Abstractions;
     using System.Net;
     using System.Net.Http;
     using System.Threading.Tasks;
-    using System.Web.Http;
+    using brief.Controllers.Models;
+    using brief.Controllers.Providers;
     using BaseControllers;
     using Extensions;
     using Helpers.Base;
-    using Models;
-    using Providers;
+    using Microsoft.AspNetCore.Mvc;
 
     public class EditionController : BaseImageUploadController
     {
@@ -34,7 +32,7 @@ namespace brief.Controllers.Controllers
         {
             var result = await _editionService.CreateEdition(edition);
 
-            return result.CreateRespose(Request, HttpStatusCode.Created, HttpStatusCode.BadRequest);
+            return result.CreateRespose(HttpStatusCode.Created, HttpStatusCode.BadRequest);
         }
 
         [HttpPut]
@@ -42,15 +40,15 @@ namespace brief.Controllers.Controllers
         {
             var result = await _editionService.CreateEdition(edition);
 
-            return result.CreateRespose(Request, HttpStatusCode.OK, HttpStatusCode.NoContent);
+            return result.CreateRespose(HttpStatusCode.OK, HttpStatusCode.NoContent);
         }
 
-        [HttpDelete]
-        public async Task<HttpResponseMessage> Delete([FromUri] Guid id)
+        [HttpDelete("{id}")]
+        public async Task<HttpResponseMessage> Delete(Guid id)
         {
             var result = await _editionService.RemoveEdition(id);
 
-            return result.CreateRespose(Request, HttpStatusCode.OK, HttpStatusCode.NoContent);
+            return result.CreateRespose(HttpStatusCode.OK, HttpStatusCode.NoContent);
         }
     }
 }

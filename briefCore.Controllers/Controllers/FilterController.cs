@@ -1,19 +1,16 @@
-﻿using briefCore.Controllers.Extensions;
-
-namespace brief.Controllers.Controllers
+﻿namespace briefCore.Controllers.Controllers
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
-    using System.Web.Http;
-    using System.Web.OData;
-    using System.Web.OData.Extensions;
-    using System.Web.OData.Query;
-    using System.Web.OData.Routing;
+    using brief.Controllers.Models.RetrieveModels;
+    using brief.Controllers.Providers;
     using Extensions;
-    using Models.RetrieveModels;
-    using Providers;
+    using Microsoft.AspNet.OData;
+    using Microsoft.AspNet.OData.Query;
+    using Microsoft.AspNet.OData.Routing;
+    using Microsoft.AspNetCore.Mvc;
 
     public class FilterController : ODataController
     {
