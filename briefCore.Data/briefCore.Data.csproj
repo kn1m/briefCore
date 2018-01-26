@@ -1,7 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-    <PropertyGroup>
-        <TargetFramework>netcoreapp2.0</TargetFramework>
-    </PropertyGroup>
-
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="2.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\briefCore.Library\briefCore.Library.csproj">
+      <Project>{719B2A0B-DE21-412E-80C6-F880ED05964F}</Project>
+      <Name>briefCore.Library</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Tesseract, Version=0.0.0.0, Culture=neutral, PublicKeyToken=ebeb3d86bef60cbe">
+      <HintPath>..\..\..\..\.nuget\packages\tesseract\3.2.0-alpha4\lib\net451\Tesseract.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

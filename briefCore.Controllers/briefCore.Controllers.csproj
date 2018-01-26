@@ -28,5 +28,6 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OData" Version="7.0.0-beta1" />
     <PackageReference Include="System.IO.Abstractions" Version="2.1.0.178" />
+    <PackageReference Include="Tesseract" Version="3.2.0-alpha4" />
   </ItemGroup>
 </Project>
