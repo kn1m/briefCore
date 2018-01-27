@@ -1,11 +1,13 @@
-﻿namespace brief.Data.Repositories
+﻿namespace briefCore.Data.Repositories
 {
     using System;
     using System.Linq;
     using System.Threading.Tasks;
+    using brief.Data;
+    using brief.Library.Entities;
+    using brief.Library.Repositories;
     using Dapper;
     using Library.Entities;
-    using Library.Repositories;
 
     public class SeriesRepository : BaseDapperRepository, ISeriesRepository
     {

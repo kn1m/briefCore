@@ -1,7 +1,8 @@
-﻿namespace brief.Library.Entities
+﻿namespace briefCore.Library.Entities
 {
     using System;
     using System.Collections.Generic;
+    using brief.Library.Entities;
 
     public class Series
     {

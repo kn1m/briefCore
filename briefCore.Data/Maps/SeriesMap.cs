@@ -1,22 +1,22 @@
 ﻿namespace briefCore.Data.Maps
 {
-    using brief.Library.Entities;
-    using Microsoft.AspNet.OData.Builder;
+    using Library.Entities;
+    using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    class SeriesMap : EntityTypeConfiguration<Series>
+    class SeriesMap
     {
-        public SeriesMap()
+        public SeriesMap(EntityTypeBuilder<Series> builder)
         {
-            ToTable("serieses");
+            builder.ToTable("serieses");
 
-            HasKey(s => s.Id);
+            builder.HasKey(s => s.Id);
 
-            Property(s => s.Name)
+            builder.Property(s => s.Name)
                 .HasMaxLength(100)
                 .IsRequired();
 
-            Property(s => s.Description)
+            builder.Property(s => s.Description)
                 .HasMaxLength(300);
         }
     }

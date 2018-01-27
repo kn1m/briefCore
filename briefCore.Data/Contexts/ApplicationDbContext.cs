@@ -1,8 +1,9 @@
 ﻿namespace briefCore.Data.Contexts
 {
-    using System.Reflection;
     using System.Threading.Tasks;
     using Interfaces;
+    using Library.Entities;
+    using Maps;
     using Microsoft.EntityFrameworkCore;
 
     public class ApplicationDbContext : DbContext, IApplicationDbContext
@@ -14,10 +15,10 @@
             Database.SetInitializer<ApplicationDbContext>(null);
         }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.AddFromAssembly(Assembly.GetExecutingAssembly());
-
+            new SeriesMap(modelBuilder.Entity<Series>());
+            
             base.OnModelCreating(modelBuilder);
         }
 

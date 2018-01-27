@@ -1,25 +1,24 @@
-﻿namespace brief.Data.Maps
+﻿namespace briefCore.Data.Maps
 {
-    using System.Data.Entity.ModelConfiguration;
+    using brief.Library.Entities;
     using Library.Entities;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    class PublisherMap : EntityTypeConfiguration<Publisher>
+    class PublisherMap
     {
-        public PublisherMap()
+        public PublisherMap(EntityTypeBuilder<Publisher> builder)
         {
-            ToTable("publishers");
+            builder.ToTable("publishers");
 
-            HasKey(p => p.Id);
+            builder.HasKey(p => p.Id);
 
-            Property(p => p.Name)
+            builder.Property(p => p.Name)
                 .HasMaxLength(100)
                 .IsRequired();
 
-            Property(p => p.Description)
+            builder.Property(p => p.Description)
                 .HasMaxLength(300);
-
-            Property(p => p.Founded)
-                .IsOptional();
         }
     }
 }

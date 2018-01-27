@@ -1,12 +1,12 @@
-﻿namespace brief.Data.Repositories
+﻿namespace briefCore.Data.Repositories
 {
     using System;
-    using System.Data.Entity;
     using System.Linq;
-    using briefCore.Data.Contexts.Interfaces;
+    using brief.Library.Entities;
+    using brief.Library.Repositories;
     using BaseRepositories;
-    using Library.Entities;
-    using Library.Repositories;
+    using Contexts.Interfaces;
+    using Microsoft.EntityFrameworkCore;
 
     public class FilterRepository : BaseRepository, IFilterRepository
     {

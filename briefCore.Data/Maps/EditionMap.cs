@@ -1,6 +1,7 @@
 ﻿namespace brief.Data.Maps
 {
     using System.Data.Entity.ModelConfiguration;
+    using briefCore.Library.Entities;
     using Library.Entities;
 
     class EditionMap : EntityTypeConfiguration<Edition>

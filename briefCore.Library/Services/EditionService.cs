@@ -46,7 +46,7 @@
             _mapper = mapper;
         }
 
-        public async Task<BaseResponseMessage> RetrieveEditionDataFromImage(ImageMlodel image)
+        public async Task<BaseResponseMessage> RetrieveEditionDataFromImage(ImageModel image)
         {
             var imagePath = ConvertToAppropirateFormat(image.Path, deleteOriginal: true);
 

@@ -1,30 +1,31 @@
-﻿namespace brief.Data.Maps
+﻿namespace briefCore.Data.Maps
 {
-    using System.Data.Entity.ModelConfiguration;
-    using Library.Entities;
+    using brief.Library.Entities;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    class LocationMap : EntityTypeConfiguration<Location>
+    class LocationMap
     {
-        public LocationMap()
+        public LocationMap(EntityTypeBuilder<Location> builder)
         {
-            ToTable("locations");
+            builder.ToTable("locations");
 
-            HasKey(l => l.Id);
+            builder.HasKey(l => l.Id);
 
-            Property(l => l.Address)
+            builder.Property(l => l.Address)
                 .HasMaxLength(100)
                 .IsRequired();
 
-            Property(l => l.Stage)
+            builder.Property(l => l.Stage)
                 .IsRequired();
 
-            Property(l => l.Loker)
+            builder.Property(l => l.Loker)
                 .IsRequired();
 
-            Property(l => l.Shelf)
+            builder.Property(l => l.Shelf)
                 .IsRequired();
 
-            HasRequired<Edition>(l => l.Edition)
+            builder.HasRequired<Edition>(l => l.Edition)
                 .WithMany(e => e.Locations)
                 .HasForeignKey(l => l.EditionId);
         }

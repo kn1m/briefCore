@@ -1,11 +1,11 @@
-﻿namespace brief.Data.Repositories.BaseRepositories
+﻿namespace briefCore.Data.Repositories.BaseRepositories
 {
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Linq;
     using System.Threading.Tasks;
-    using briefCore.Data.Contexts.Interfaces;
-    using Library.Helpers;
+    using brief.Library.Helpers;
+    using Contexts.Interfaces;
+    using Microsoft.EntityFrameworkCore;
 
     public class BaseRepository
     {
