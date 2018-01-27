@@ -1,43 +1,38 @@
-﻿namespace brief.Data.Maps
+﻿namespace briefCore.Data.Maps
 {
-    using System.Data.Entity.ModelConfiguration;
-    using briefCore.Library.Entities;
+    using brief.Library.Entities;
     using Library.Entities;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    class EditionMap : EntityTypeConfiguration<Edition>
+    class EditionMap 
     {
-        public EditionMap()
+        public EditionMap(EntityTypeBuilder<Edition> builder)
         {
-            ToTable("editions");
+            builder.ToTable("editions");
 
-            HasKey(e => e.Id);
+            builder.HasKey(e => e.Id);
 
-            Property(e => e.Description)
+            builder.Property(e => e.Description)
                 .HasMaxLength(300)
                 .IsRequired();
 
-            Property(e => e.Amount)
-                .IsOptional();
-
-            Property(e => e.Year)
-                .IsOptional();
-
-            Property(e => e.BookId)
+            builder.Property(e => e.BookId)
                 .IsRequired();
 
-            Property(e => e.PublisherId)
+            builder.Property(e => e.PublisherId)
                 .IsRequired();
 
-            Property(e => e.EditionType)
+            builder.Property(e => e.EditionType)
                 .IsRequired();
 
-            Property(e => e.Language)
+            builder.Property(e => e.Language)
                 .IsRequired();
 
-            Property(e => e.Isbn13)
+            builder.Property(e => e.Isbn13)
                 .HasMaxLength(13);
 
-            Property(e => e.Isbn10)
+            builder.Property(e => e.Isbn10)
                 .HasMaxLength(10);
 
             HasRequired<Publisher>(e => e.Publisher)

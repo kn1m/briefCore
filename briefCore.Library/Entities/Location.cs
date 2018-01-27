@@ -1,6 +1,7 @@
-﻿namespace brief.Library.Entities
+﻿namespace briefCore.Library.Entities
 {
     using System;
+    using brief.Library.Entities;
 
     public class Location
     {

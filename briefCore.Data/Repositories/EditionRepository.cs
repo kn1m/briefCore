@@ -8,6 +8,7 @@
     using brief.Library.Repositories;
     using BaseRepositories;
     using Contexts.Interfaces;
+    using Library.Entities;
     using Microsoft.EntityFrameworkCore;
 
     public class EditionRepository : BaseRepository, IEditionRepository

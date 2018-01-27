@@ -1,6 +1,7 @@
 ﻿namespace brief.Library.Entities
 {
     using System;
+    using briefCore.Library.Entities;
 
     public class EditionFile
     {

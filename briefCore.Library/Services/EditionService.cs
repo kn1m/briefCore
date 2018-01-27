@@ -4,6 +4,7 @@
     using System.IO.Abstractions;
     using System.Threading.Tasks;
     using AutoMapper;
+    using briefCore.Library.Entities;
     using briefCore.Library.Helpers;
     using BaseServices;
     using Controllers.Helpers;

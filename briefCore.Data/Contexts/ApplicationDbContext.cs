@@ -18,6 +18,7 @@
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             new SeriesMap(modelBuilder.Entity<Series>());
+            new LocationMap(modelBuilder.Entity<Location>());
             
             base.OnModelCreating(modelBuilder);
         }
