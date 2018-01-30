@@ -1,7 +1,13 @@
 ﻿namespace briefCore.Data.Maps
 {
-    public class BookByAuthorMap
+    using Library.Entities;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+    class BookByAuthorMap
     {
-        
+        public BookByAuthorMap(EntityTypeBuilder<BookByAuthor> builder)
+        {
+            
+        }
     }
 }

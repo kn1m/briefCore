@@ -1,7 +1,13 @@
 ﻿namespace briefCore.Data.Maps
 {
-    public class BookInSeriesMap
+    using Library.Entities;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+    class BookInSeriesMap
     {
-        
+        public BookInSeriesMap(EntityTypeBuilder<BookInSeries> builder)
+        {
+            
+        }    
     }
 }

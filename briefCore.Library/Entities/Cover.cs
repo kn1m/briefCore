@@ -1,7 +1,6 @@
-﻿namespace brief.Library.Entities
+﻿namespace briefCore.Library.Entities
 {
     using System;
-    using briefCore.Library.Entities;
 
     public class Cover
     {

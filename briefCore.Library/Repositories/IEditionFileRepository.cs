@@ -2,6 +2,7 @@
 {
     using System;
     using System.Threading.Tasks;
+    using briefCore.Library.Entities;
     using Entities;
 
     public interface IEditionFileRepository

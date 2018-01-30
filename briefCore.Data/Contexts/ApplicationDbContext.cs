@@ -14,10 +14,6 @@
         public ApplicationDbContext(string connectionString)
         {
             _connectionString = connectionString ?? throw new ArgumentNullException(nameof(connectionString));
-            
-            //Database.SetInitializer(
-            //    new CreateDatabaseIfNotExists<ApplicationDbContext>());
-            //Database.SetInitializer<ApplicationDbContext>(null);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -31,6 +27,10 @@
             new EditionMap(modelBuilder.Entity<Edition>());
             new LocationMap(modelBuilder.Entity<Location>());
             new AuthorMap(modelBuilder.Entity<Author>());
+            new CoverMap(modelBuilder.Entity<Cover>());
+            new EditionFileMap(modelBuilder.Entity<EditionFile>());
+            new BookInSeriesMap(modelBuilder.Entity<BookInSeries>());
+            new BookByAuthorMap(modelBuilder.Entity<BookByAuthor>());
                 
             base.OnModelCreating(modelBuilder);
         }
