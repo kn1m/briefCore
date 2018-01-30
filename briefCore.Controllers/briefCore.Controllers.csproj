@@ -10,9 +10,6 @@
     <Folder Include="Providers" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.AspNetCore.Mvc.Abstractions, Version=2.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-      <HintPath>..\..\..\..\..\..\..\..\usr\share\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.mvc.abstractions\2.0.2\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.Abstractions.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNetCore.Mvc.Core, Version=2.0.2.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
       <HintPath>..\..\..\..\..\..\..\..\usr\share\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.mvc.core\2.0.2\lib\netstandard2.0\Microsoft.AspNetCore.Mvc.Core.dll</HintPath>
     </Reference>
@@ -24,6 +21,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.OData" Version="7.0.0-beta1" />
     <PackageReference Include="System.IO.Abstractions" Version="2.1.0.178" />
     <PackageReference Include="Tesseract" Version="3.2.0-alpha4" />
