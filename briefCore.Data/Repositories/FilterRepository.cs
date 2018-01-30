@@ -18,8 +18,8 @@
 
         public IQueryable<Book> GetBookById(Guid id)
             => Context.Set<Book>().Where(b => b.Id == id)
-                .Include(b => b.Serieses)
-                .Include(b => b.Authors)
+                .Include(b => b.BookInSerieses)
+                .Include(b => b.BookByAuthors)
                 .Include(b => b.Editions);
 
         public Cover GetCoverById(Guid id)

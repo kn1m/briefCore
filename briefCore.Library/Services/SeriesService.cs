@@ -1,17 +1,16 @@
-﻿namespace brief.Library.Services
+﻿namespace briefCore.Library.Services
 {
     using System;
     using System.IO.Abstractions;
     using System.Threading.Tasks;
     using AutoMapper;
-    using briefCore.Library.Entities;
-    using BaseServices;
-    using Controllers.Models;
-    using Controllers.Models.BaseEntities;
-    using Controllers.Providers;
+    using brief.Controllers.Models;
+    using brief.Controllers.Models.BaseEntities;
+    using brief.Controllers.Providers;
+    using brief.Library.Helpers;
+    using brief.Library.Repositories;
+    using brief.Library.Services.BaseServices;
     using Entities;
-    using Helpers;
-    using Repositories;
 
     public class SeriesService : BaseFileService, ISeriesService
     {
