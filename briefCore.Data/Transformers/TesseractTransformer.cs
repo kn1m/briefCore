@@ -32,8 +32,7 @@
 
             try
             {
-                //TODO: FIIIX
-                /*
+                
                 using (var engine = new TesseractEngine(_dataPath, configurations.First().ToString(), _mode))
                 {
                     using (var img = Pix.LoadFromFile(source))
@@ -83,7 +82,6 @@
                         }
                     }
                 }
-                */
             }
             catch (Exception e)
             {

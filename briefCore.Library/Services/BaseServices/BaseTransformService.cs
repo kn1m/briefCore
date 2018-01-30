@@ -1,12 +1,12 @@
 ﻿namespace briefCore.Library.Services.BaseServices
 {
     using System;
+    using System.Drawing;
     using System.IO.Abstractions;
-    using System.Net.Mime;
     using brief.Library.Helpers;
     using brief.Library.Services.BaseServices;
     using Helpers;
-    using Tesseract;
+    using System.Drawing.Imaging;
 
     public abstract class BaseTransformService : BaseFileService
     {
@@ -21,9 +21,7 @@
 
         public virtual string ConvertToAppropirateFormat(string existingFilePath, bool deleteOriginal)
         {
-            //TODO: fix
-            /*
-            var image = MediaTypeNames.Image.FromFile(existingFilePath);
+            var image = Image.FromFile(existingFilePath);
 
             if (image.RawFormat.Equals(_mainTransformerFormat))
             {
@@ -42,8 +40,6 @@
             }
 
             return newPath;
-            */
-            return null;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace briefCore.Library.Helpers
 {
-    using Tesseract;
+    using System.Drawing.Imaging;
 
     public class BaseTransformerSettings
     {

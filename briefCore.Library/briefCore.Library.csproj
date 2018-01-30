@@ -14,5 +14,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\briefCore.Controllers\briefCore.Controllers.csproj" />
+    <ProjectReference Include="..\briefCore.Tesseract\briefCore.Tesseract.csproj" />
   </ItemGroup>
 </Project>

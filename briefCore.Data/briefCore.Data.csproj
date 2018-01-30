@@ -17,6 +17,7 @@
       <Project>{719B2A0B-DE21-412E-80C6-F880ED05964F}</Project>
       <Name>briefCore.Library</Name>
     </ProjectReference>
+    <ProjectReference Include="..\briefCore.Tesseract\briefCore.Tesseract.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Tesseract, Version=0.0.0.0, Culture=neutral, PublicKeyToken=ebeb3d86bef60cbe">
