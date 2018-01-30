@@ -2,6 +2,7 @@
 {
     using System;
     using System.IO.Abstractions;
+    using System.Linq;
     using System.Threading.Tasks;
     using AutoMapper;
     using brief.Controllers.Models;
@@ -147,7 +148,8 @@
 
                 if (seriesToRemove.BooksInSeries != null)
                 {
-                    await _bookRepository.RemoveBooks(seriesToRemove.BooksInSeries);
+                    //TODO: to check out
+                    await _bookRepository.RemoveBooks(seriesToRemove.BooksInSeries.Select(x => x.Book));
                 }
             }
             

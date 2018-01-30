@@ -85,7 +85,8 @@
 
                 if (series != null)
                 {
-                    series.BooksInSeries = multi.Read<Book>().ToList();
+                    //TODO: fix
+                    //series.BooksInSeries = multi.Read<Book>().ToList();
                 }
             }
 

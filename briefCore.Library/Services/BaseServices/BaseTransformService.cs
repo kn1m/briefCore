@@ -21,6 +21,8 @@
 
         public virtual string ConvertToAppropirateFormat(string existingFilePath, bool deleteOriginal)
         {
+            //TODO: fix
+            /*
             var image = MediaTypeNames.Image.FromFile(existingFilePath);
 
             if (image.RawFormat.Equals(_mainTransformerFormat))
@@ -40,6 +42,8 @@
             }
 
             return newPath;
+            */
+            return null;
         }
     }
 }

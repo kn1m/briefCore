@@ -1,6 +1,7 @@
 ﻿namespace briefCore.Controllers.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.IO.Abstractions;
     using System.Net;
     using System.Net.Http;
@@ -9,6 +10,7 @@
     using BaseControllers;
     using Extensions;
     using Helpers.Base;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
 
     public class CoverController : BaseImageUploadController
@@ -23,12 +25,12 @@
         }
 
         [HttpPost("{id}")]
-        public async Task<HttpResponseMessage> SaveCover(Guid id)
-            => await BaseImageUpload(_coverService.SaveCover, _coverService.StorageSettings, id);
+        public async Task<HttpResponseMessage> SaveCover(Guid id, List<IFormFile> imageFiles)
+            => await BaseImageUpload(imageFiles, _coverService.SaveCover, _coverService.StorageSettings, id);
 
         [HttpPost]
-        public async Task<HttpResponseMessage> RetrieveDataFromCover()
-            => await BaseTextRecognitionUpload(_coverService.RetrieveDataFromCover, _coverService.StorageSettings, _headerSettings);
+        public async Task<HttpResponseMessage> RetrieveDataFromCover(List<IFormFile> imageFiles)
+            => await BaseTextRecognitionUpload(imageFiles, _coverService.RetrieveDataFromCover, _coverService.StorageSettings, _headerSettings);
 
         [HttpDelete("{id}")]
         public async Task<HttpResponseMessage> Delete(Guid id)

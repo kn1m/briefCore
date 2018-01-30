@@ -16,6 +16,7 @@
         public IQueryable<Book> GetBooks()
             => Context.Set<Book>();
 
+        //TODO: to checkout
         public IQueryable<Book> GetBookById(Guid id)
             => Context.Set<Book>().Where(b => b.Id == id)
                 .Include(b => b.BookInSerieses)

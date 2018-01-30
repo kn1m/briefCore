@@ -1,6 +1,7 @@
 ﻿namespace briefCore.Controllers.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.IO.Abstractions;
     using System.Net;
     using System.Net.Http;
@@ -10,6 +11,7 @@
     using BaseControllers;
     using Extensions;
     using Helpers.Base;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
 
     public class EditionController : BaseImageUploadController
@@ -24,8 +26,8 @@
         }
 
         [HttpPost]
-        public async Task<HttpResponseMessage> RetriveData()
-            => await BaseTextRecognitionUpload(_editionService.RetrieveEditionDataFromImage, _editionService.StorageSettings, _headerSettings);
+        public async Task<HttpResponseMessage> RetriveData(List<IFormFile> imageFiles)
+            => await BaseTextRecognitionUpload(imageFiles, _editionService.RetrieveEditionDataFromImage, _editionService.StorageSettings, _headerSettings);
 
         [HttpPost]
         public async Task<HttpResponseMessage> Create([FromBody] EditionModel edition)

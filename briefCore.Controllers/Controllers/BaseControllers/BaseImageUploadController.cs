@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.IO.Abstractions;
     using System.Linq;
     using System.Net;
@@ -12,8 +13,9 @@
     using brief.Controllers.Models.BaseEntities;
     using Extensions;
     using Helpers.Base;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Http.Extensions;
     using Microsoft.AspNetCore.Mvc;
-    using StreamProviders;
 
     public abstract class BaseImageUploadController : Controller
     {
@@ -24,21 +26,23 @@
             _fileSystem = fileSystem ?? throw new ArgumentNullException(nameof(fileSystem));
         }
 
-        protected virtual async Task<HttpResponseMessage> BaseTextRecognitionUpload<TData>(Func<ImageModel, Task<TData>> strategy, 
+        protected virtual async Task<HttpResponseMessage> BaseTextRecognitionUpload<TData>(List<IFormFile> imageFiles,
+                                                                                           Func<ImageModel, Task<TData>> strategy, 
                                                                                            StorageSettings storageSettings,
                                                                                            IHeaderSettings headerSettings) 
             where TData : IRecognizable 
         {
-            if(!Request.Content.IsMimeMultipartContent())
+            
+            if(Request.GetMultipartBoundary() == null)
             {
-                throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
+                return new HttpResponseMessage { StatusCode = HttpStatusCode.UnsupportedMediaType };
             }
-
+            
             var languageToProccess = Request.RetrieveHeader("Target-Language", headerSettings);
 
             if (languageToProccess == null)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Specify appropriate target language.");
+                return new HttpResponseMessage{ StatusCode = HttpStatusCode.BadRequest, ReasonPhrase = "Specify appropriate target language."};
             }
 
             var clientFolderId = Guid.NewGuid();
@@ -46,74 +50,80 @@
 
             _fileSystem.Directory.CreateDirectory(currentProviderPath);
 
-            FileMultipartFormDataStreamProvider provider = new FileMultipartFormDataStreamProvider(currentProviderPath);
-
             try
             {
-                await Request.Content.ReadAsMultipartAsync(provider);
-
                 List<string> files = new List<string>();
                 var dataTasks = new List<Task<TData>>();
 
-                foreach (MultipartFileData file in provider.FileData)
+                foreach (var formFile in imageFiles)
                 {
-                    files.Add(_fileSystem.Path.GetFileName(file.LocalFileName));
+                    if (formFile.Length > 0)
+                    {
+                        using (var stream = new FileStream(currentProviderPath, FileMode.Create))
+                        {
+                            await formFile.CopyToAsync(stream);
+                        }
+                    }
+                    
+                    files.Add(_fileSystem.Path.GetFileName(formFile.FileName));
 
                     var imageToSave = new ImageModel
                     {
-                        Path = _fileSystem.Path.Combine(currentProviderPath, file.LocalFileName),
+                        Path = _fileSystem.Path.Combine(currentProviderPath, formFile.FileName),
                         TargetLanguage = languageToProccess
                     };
 
                     dataTasks.Add(strategy.Invoke(imageToSave));
                 }
-
+                
                 var results = await Task.WhenAll(dataTasks);
 
                 _fileSystem.Directory.Delete(currentProviderPath);
 
                 var resultingDict = Enumerable.Range(0, results.Length).ToDictionary(i => files[i], i => results[i].RawData);
-
-                return Request.CreateResponse(HttpStatusCode.OK, resultingDict);
+                
+                //TODO: implement Dict extension
+                return new HttpResponseMessage{StatusCode = HttpStatusCode.OK, ReasonPhrase = resultingDict.ToString()};
             }
             catch (Exception e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                return new HttpResponseMessage{StatusCode = HttpStatusCode.InternalServerError, ReasonPhrase = e.Message};
             }
         }
 
-        protected virtual async Task<HttpResponseMessage> BaseImageUpload<TData>(Func<ImageModel, Task<TData>> strategy,
+        protected virtual async Task<HttpResponseMessage> BaseImageUpload<TData>(List<IFormFile> imageFiles,
+                                                                                 Func<ImageModel, Task<TData>> strategy,
                                                                                  StorageSettings storageSettings,
                                                                                  Guid targetId)
             where TData : BaseResponseMessage
         {
             if (targetId == Guid.Empty)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, "Target id should be provided.");
+                return new HttpResponseMessage{ StatusCode = HttpStatusCode.BadRequest, ReasonPhrase = "Target id should be provided."};
             }
 
-            if (!Request.Content.IsMimeMultipartContent())
+            if(Request.GetMultipartBoundary() == null)
             {
-                throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
+                return new HttpResponseMessage { StatusCode = HttpStatusCode.UnsupportedMediaType };
             }
 
-            var filesCount = HttpContext.Current.Request.Files.Count;
 
-            if (filesCount != 1)
+            if (imageFiles.Count != 1)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest, $"Single-file upload is only allowed. But {filesCount} files detected.");
+                return new HttpResponseMessage{StatusCode = HttpStatusCode.BadRequest, ReasonPhrase = $"Single-file upload is only allowed. But {imageFiles.Count} files detected."};
             }
-
-            FileMultipartFormDataStreamProvider provider = new FileMultipartFormDataStreamProvider(storageSettings.StoragePath);
 
             try
             {
-                await Request.Content.ReadAsMultipartAsync(provider);
-
-                var newFilename = Guid.NewGuid() + "_" + _fileSystem.Path.GetFileName(provider.FileData.First().LocalFileName);
+                var newFilename = Guid.NewGuid() + "_" + _fileSystem.Path.GetFileName(imageFiles.First().FileName);
                 string newAbsolutePath = _fileSystem.Path.Combine(storageSettings.StoragePath, newFilename);
 
-                _fileSystem.File.Move(provider.FileData.First().LocalFileName, newAbsolutePath);
+                using (var stream = new FileStream(storageSettings.StoragePath, FileMode.Create))
+                {
+                    await imageFiles.First().CopyToAsync(stream);
+                }
+                
+                _fileSystem.File.Move(imageFiles.First().FileName, newAbsolutePath);
 
                 var imageToSave = new ImageModel
                 {
@@ -127,7 +137,7 @@
             }
             catch (Exception e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                return new HttpResponseMessage{StatusCode = HttpStatusCode.InternalServerError, ReasonPhrase = e.Message};
             }
         }
     }

@@ -39,10 +39,14 @@
         {
             IQueryable results = options.ApplyTo(_filterService.GetBooks(), new ODataQuerySettings { PageSize = 5 });
 
+            return null;
+            //TODO: fix
+            /*
             return new PageResult<BookRetrieveModel>(
                 results as IEnumerable<BookRetrieveModel>,
                 Request.ODataProperties().NextLink,
                 Request.ODataProperties().TotalCount);
+                */
         }
 
         [HttpGet]
