@@ -1,27 +1,28 @@
-﻿namespace brief.Data.Maps
+﻿namespace briefCore.Data.Maps
 {
-    using System.Data.Entity.ModelConfiguration;
-    using briefCore.Library.Entities;
-    using Library.Entities;
+    using brief.Library.Entities;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    class CoverMap : EntityTypeConfiguration<Cover>
+    class CoverMap
     {
-        public CoverMap()
+        public CoverMap(EntityTypeBuilder<Cover> builder)
         {
-            ToTable("covers");
+            builder.ToTable("covers");
 
-            HasKey(c => c.Id);
+            builder.HasKey(c => c.Id);
 
-            Property(c => c.LinkTo)
+            builder.Property(c => c.LinkTo)
                 .HasMaxLength(256)
                 .IsRequired();
 
-            Property(c => c.EditionId)
+            builder.Property(c => c.EditionId)
                 .IsRequired();
 
-            HasRequired<Edition>(c => c.Edition)
+            builder.HasOne(c => c.Edition)
                 .WithMany(e => e.Covers)
-                .HasForeignKey(c => c.EditionId);
+                .HasForeignKey(c => c.EditionId)
+                .IsRequired();
         }
     }
 }

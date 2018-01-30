@@ -1,6 +1,5 @@
 ﻿namespace briefCore.Data.Maps
 {
-    using brief.Library.Entities;
     using Library.Entities;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -26,9 +25,10 @@
             builder.Property(l => l.Shelf)
                 .IsRequired();
 
-            //builder.HasRequired<Edition>(l => l.Edition)
-            //    .WithMany(e => e.Locations)
-            //    .HasForeignKey(l => l.EditionId);
+            builder.HasOne(l => l.Edition)
+                .WithMany(e => e.Locations)
+                .HasForeignKey(l => l.EditionId)
+                .IsRequired();
         }
     }
 }

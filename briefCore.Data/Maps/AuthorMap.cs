@@ -1,23 +1,24 @@
-﻿namespace brief.Data.Maps
+﻿namespace briefCore.Data.Maps
 {
-    using System.Data.Entity.ModelConfiguration;
     using Library.Entities;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    class AuthorMap : EntityTypeConfiguration<Author>
+    class AuthorMap
     {
-        public AuthorMap()
+        public AuthorMap(EntityTypeBuilder<Author> builder)
         {
-            ToTable("authors");
+            builder.ToTable("authors");
 
-            HasKey(a => a.Id);
+            builder.HasKey(a => a.Id);
 
-            Property(a => a.AuthorFirstName)
+            builder.Property(a => a.AuthorFirstName)
                 .HasMaxLength(100);
 
-            Property(a => a.AuthorSecondName)
+            builder.Property(a => a.AuthorSecondName)
                 .HasMaxLength(100);
 
-            Property(a => a.AuthorLastName)
+            builder.Property(a => a.AuthorLastName)
                 .HasMaxLength(100)
                 .IsRequired();
         }

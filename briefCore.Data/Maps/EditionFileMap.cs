@@ -1,33 +1,34 @@
-﻿namespace brief.Data.Maps
+﻿namespace briefCore.Data.Maps
 {
-    using System.Data.Entity.ModelConfiguration;
-    using briefCore.Library.Entities;
-    using Library.Entities;
+    using brief.Library.Entities;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    class EditionFileMap : EntityTypeConfiguration<EditionFile>
+    class EditionFileMap
     {
-        public EditionFileMap()
+        public EditionFileMap(EntityTypeBuilder<EditionFile> builder)
         {
-            ToTable("edition_files");
+            builder.ToTable("edition_files");
 
-            HasKey(ef => ef.Id);
+            builder.HasKey(ef => ef.Id);
 
-            Property(ef => ef.Path)
+            builder.Property(ef => ef.Path)
                 .HasMaxLength(256)
                 .IsRequired();
 
-            Property(ef => ef.IsReaded)
+            builder.Property(ef => ef.IsReaded)
                 .IsRequired();
 
-            Property(ef => ef.Type)
+            builder.Property(ef => ef.Type)
                 .IsRequired();
 
-            Property(ef => ef.Uploaded)
+            builder.Property(ef => ef.Uploaded)
                 .IsRequired();
 
-            HasRequired<Edition>(ef => ef.Edition)
+            builder.HasOne(ef => ef.Edition)
                 .WithMany(e => e.Files)
-                .HasForeignKey(ef => ef.EditionId);
+                .HasForeignKey(ef => ef.EditionId)
+                .IsRequired();
         }
     }
 }

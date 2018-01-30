@@ -1,25 +1,26 @@
-﻿namespace brief.Data.Maps
+﻿namespace briefCore.Data.Maps
 {
-    using System.Data.Entity.ModelConfiguration;
-    using briefCore.Library.Entities;
+    using brief.Library.Entities;
     using Library.Entities;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    class BookMap : EntityTypeConfiguration<Book>
+    class BookMap
     {
-        public BookMap()
+        public BookMap(EntityTypeBuilder<Book> builder)
         {
-            ToTable("books");
+            builder.ToTable("books");
 
-            HasKey(b => b.Id);
+            builder.HasKey(b => b.Id);
 
-            Property(b => b.Name)
+            builder.Property(b => b.Name)
                 .HasMaxLength(100)
                 .IsRequired();
 
-            Property(b => b.Description)
+            builder.Property(b => b.Description)
                 .HasMaxLength(300);
 
-            HasMany<Series>(b => b.Serieses)
+            builder.HasMany<Series>(b => b.Serieses)
                 .WithMany(s => s.BooksInSeries)
                 .Map(cs =>
                 {
@@ -28,7 +29,7 @@
                     cs.ToTable("books_in_series");
                 });
 
-            HasMany<Author>(b => b.Authors)
+            builder.HasMany<Author>(b => b.Authors)
                 .WithMany(a => a.BooksByAuthor)
                 .Map(ba =>
                 { 
