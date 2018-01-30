@@ -5,7 +5,7 @@
     /// </summary>
     internal static class Constants
     {
-        public const string LeptonicaDllName = "liblept172";
-        public const string TesseractDllName = "libtesseract304";
+        public const string LeptonicaDllName = "liblept.so.5.0.1";
+        public const string TesseractDllName = "libtesseract.so.3.0.5";
     }
 }
