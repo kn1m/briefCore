@@ -10,6 +10,6 @@
         public string AuthorFirstName { get; set; }
         public string AuthorSecondName { get; set; }
         public string AuthorLastName { get; set; }
-        public virtual IList<Book> BooksByAuthor { get; set; }
+        public List<BookByAuthor> BooksByAuthor { get; set; }
     }
 }

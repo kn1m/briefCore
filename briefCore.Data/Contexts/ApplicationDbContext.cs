@@ -31,6 +31,7 @@
             new EditionFileMap(modelBuilder.Entity<EditionFile>());
             new BookInSeriesMap(modelBuilder.Entity<BookInSeries>());
             new BookByAuthorMap(modelBuilder.Entity<BookByAuthor>());
+            new PublisherMap(modelBuilder.Entity<Publisher>());
                 
             base.OnModelCreating(modelBuilder);
         }

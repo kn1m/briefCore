@@ -1,20 +1,19 @@
-﻿namespace brief.Library.Services
+﻿namespace briefCore.Library.Services
 {
     using System;
     using System.IO.Abstractions;
     using System.Threading.Tasks;
     using AutoMapper;
-    using briefCore.Library.Entities;
-    using briefCore.Library.Helpers;
+    using brief.Controllers.Helpers;
+    using brief.Controllers.Models;
+    using brief.Controllers.Models.BaseEntities;
+    using brief.Controllers.Providers;
+    using brief.Library.Helpers;
+    using brief.Library.Repositories;
+    using brief.Library.Transformers;
     using BaseServices;
-    using Controllers.Helpers;
-    using Controllers.Models;
-    using Controllers.Models.BaseEntities;
-    using Controllers.Providers;
     using Entities;
     using Helpers;
-    using Repositories;
-    using Transformers;
 
     public class EditionService : BaseTransformService, IEditionService
     {

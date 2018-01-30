@@ -11,6 +11,8 @@ using Microsoft.Extensions.Options;
 
 namespace briefCore
 {
+    using Data.Contexts;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -32,6 +34,11 @@ namespace briefCore
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            
+            using (var client = new ApplicationDbContext(Configuration.GetConnectionString("briefContext")))
+            {
+                client.Database.EnsureCreated();
             }
 
             app.UseMvc();

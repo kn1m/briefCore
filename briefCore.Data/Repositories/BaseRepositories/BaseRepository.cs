@@ -6,6 +6,7 @@
     using brief.Library.Helpers;
     using Contexts.Interfaces;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.ChangeTracking;
 
     public class BaseRepository
     {
@@ -21,10 +22,10 @@
         protected IQueryable<TEntity> RetrieveSet<TEntity>() where TEntity : class
             => Context.Set<TEntity>();
 
-        protected TEntity Attach<TEntity>(TEntity entity) where TEntity : class 
+        protected EntityEntry<TEntity> Attach<TEntity>(TEntity entity) where TEntity : class 
             => Context.Set<TEntity>().Attach(entity);
 
-        protected TEntity Add<TEntity>(TEntity entity) where TEntity : class
+        protected EntityEntry<TEntity> Add<TEntity>(TEntity entity) where TEntity : class
             => Context.Set<TEntity>().Add(entity);
 
         protected void Update<TEntity>(TEntity entity) where TEntity : class

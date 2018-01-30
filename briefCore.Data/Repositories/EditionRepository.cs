@@ -29,7 +29,7 @@
             var newEdition = Add(edition);
             await Commit();
 
-            return newEdition.Id;
+            return newEdition.Entity.Id;
         }
 
         public async Task<Guid> UpdateEdition(Edition edition)

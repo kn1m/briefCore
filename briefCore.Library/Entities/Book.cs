@@ -1,17 +1,16 @@
-﻿namespace brief.Library.Entities
+﻿namespace briefCore.Library.Entities
 {
     using System;
     using System.Collections.Generic;
-    using briefCore.Library.Entities;
 
     public class Book
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public virtual IList<Edition> Editions { get; set; }
-        public virtual IList<Series> Serieses { get; set; }
-        public virtual IList<Author> Authors { get; set; }
+        public List<Edition> Editions { get; set; }
+        public List<BookInSeries> BookInSerieses { get; set; }
+        public List<BookByAuthor> BookByAuthors { get; set; }
 
         public override bool Equals(object obj)
         {

@@ -13,4 +13,10 @@
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\briefCore.Data\briefCore.Data.csproj">
+      <Project>{96AB691F-C317-4557-8A3E-7B0FA5B98323}</Project>
+      <Name>briefCore.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>

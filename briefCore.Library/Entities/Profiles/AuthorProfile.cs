@@ -3,7 +3,6 @@
     using System;
     using AutoMapper;
     using brief.Controllers.Models;
-    using brief.Library.Entities;
 
     public class AuthorProfile : Profile
     {

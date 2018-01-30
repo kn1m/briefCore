@@ -7,6 +7,7 @@
     using brief.Library.Repositories;
     using BaseRepositories;
     using Contexts.Interfaces;
+    using Library.Entities;
     using Microsoft.EntityFrameworkCore;
 
     public class BookRepository : BaseRepository, IBookRepository
@@ -24,7 +25,7 @@
             var newBook = Add(book);
             await Commit();
 
-            return newBook.Id;
+            return newBook.Entity.Id;
         }
 
         public async Task<Guid> UpdateBook(Book book)

@@ -6,6 +6,7 @@
     using AutoMapper;
     using briefCore.Library.Entities;
     using briefCore.Library.Helpers;
+    using briefCore.Library.Services.BaseServices;
     using BaseServices;
     using Controllers.Helpers;
     using Controllers.Models;

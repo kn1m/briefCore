@@ -24,7 +24,7 @@
             var newPublisher = Add(publisher);
             await Commit();
 
-            return newPublisher.Id;
+            return newPublisher.Entity.Id;
         }
 
         public async Task<Guid> UpdatePublisher(Publisher publisher)
