@@ -9,6 +9,8 @@
     using System.Threading.Tasks;
     using brief.Controllers.Helpers;
     using brief.Controllers.Models.BaseEntities;
+    using Microsoft.AspNetCore.Mvc;
+    using StreamProviders;
 
     public abstract class BaseFileUploadController : Controller
     {
