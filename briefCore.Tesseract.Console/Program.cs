@@ -10,16 +10,16 @@ namespace briefCore.Tesseract.Console
         {
             string result = String.Empty;
             
-            using (var engine = new TesseractEngine("../../../tessdata", "eng", EngineMode.Default))
+            using (var engine = new TesseractEngine("../../../tessdata", "ukr", EngineMode.Default))
                 {
-                    using (var img = Pix.LoadFromFile("phototest.tif"))
+                    using (var img = Pix.LoadFromFile("1.tiff"))
                     {
                         using (var page = engine.Process(img))
                         {
                             var text = page.GetText();
                             Console.WriteLine("Mean confidence: {0}", page.GetMeanConfidence());
 
-                            result += text;
+                            //result += text;
 
                             using (var iter = page.GetIterator())
                             {
