@@ -4,7 +4,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Controllers\BaseControllers" />
-    <Folder Include="Filters" />
     <Folder Include="Helpers" />
     <Folder Include="Models" />
     <Folder Include="Providers" />

@@ -82,8 +82,7 @@
 
                 var resultingDict = Enumerable.Range(0, results.Length).ToDictionary(i => files[i], i => results[i].RawData);
                 
-                //TODO: implement Dict extension
-                return new HttpResponseMessage{StatusCode = HttpStatusCode.OK, ReasonPhrase = resultingDict.ToString()};
+                return new HttpResponseMessage{StatusCode = HttpStatusCode.OK, ReasonPhrase = resultingDict.GetString()};
             }
             catch (Exception e)
             {
