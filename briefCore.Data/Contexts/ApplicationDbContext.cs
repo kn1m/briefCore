@@ -23,6 +23,7 @@
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            new BookMap(modelBuilder.Entity<Book>());
             new SeriesMap(modelBuilder.Entity<Series>());
             new EditionMap(modelBuilder.Entity<Edition>());
             new LocationMap(modelBuilder.Entity<Location>());

@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using briefCore.Library.Entities;
     using Library.Entities;
     using Library.Repositories;
 

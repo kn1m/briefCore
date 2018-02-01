@@ -1,7 +1,7 @@
-﻿namespace brief.Library.Entities
+﻿namespace briefCore.Library.Entities
 {
     using System;
-    using briefCore.Library.Entities;
+    using brief.Library.Entities;
 
     public class Note
     {
@@ -16,7 +16,7 @@
         public DateTime? ModifiedOn { get; set; }
         public NoteType NoteType { get; set; }
         public Guid? EditionId { get; set; }
-        public virtual Edition Edition { get; set; }
+        //public virtual Edition Edition { get; set; }
         public bool Reviewed { get; set; }
         public string Comment { get; set; }
     }
