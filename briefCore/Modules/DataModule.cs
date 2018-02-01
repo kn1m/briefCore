@@ -1,6 +1,6 @@
 ﻿namespace briefCore.Modules
 {
-    using System.IO;
+    using System;
     using Autofac;
     using Autofac.Core;
     using brief.Data.Repositories;
@@ -10,29 +10,30 @@
     using Data.Contexts.Interfaces;
     using Data.Repositories;
     using Data.Transformers;
+    using Library.Helpers;
     using Microsoft.Extensions.Configuration;
+    using Tesseract;
 
     public class DataModule : Module
     {
+        private readonly IConfiguration _configuration;
+        
+        public DataModule(IConfiguration configuration)
+        {
+            _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+        }
+        
         protected override void Load(ContainerBuilder builder)
         {
-            var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json").Build();
-            
-            
-            //NameValueCollection myParamsCollection =
-            //    (NameValueCollection)ConfigurationManager.GetSection("tesseractData");
-
             builder.RegisterType<TesseractTransformer>()
                 .As<ITransformer<string, string>>()
                 .WithParameters(new Parameter[]
                 {
-                    //new NamedParameter("dataPath", myParamsCollection["TrainDataPath"]),
-                    //new NamedParameter("mode", myParamsCollection["EngineMode"].ConvertToEnum<EngineMode>())
+                    new NamedParameter("dataPath", _configuration["TesseractSettings:TrainDataPath"]),
+                    new NamedParameter("mode", _configuration["TesseractSettings:EngineMode"].ConvertToEnum<EngineMode>())
                 });
 
-            var briefConnectionString = config.GetConnectionString("briefContext");//ConfigurationManager.ConnectionStrings["briefContext"].ConnectionString;
+            var briefConnectionString = _configuration.GetConnectionString("briefContext");
 
             builder.RegisterType<ApplicationDbContext>()
                 .As<IApplicationDbContext>()

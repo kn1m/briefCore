@@ -1,10 +1,12 @@
 ﻿namespace briefCore
 {
+    using Autofac;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Data.Contexts;
+    using Modules;
 
     public class Startup
     {
@@ -35,6 +37,14 @@
             }
 
             app.UseMvc();
+        }
+        
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule(new CommonModule());
+            builder.RegisterModule(new DataModule(Configuration));
+            builder.RegisterModule(new ServicesModule(Configuration));
+            builder.RegisterModule(new ControllersModule());
         }
     }
 }

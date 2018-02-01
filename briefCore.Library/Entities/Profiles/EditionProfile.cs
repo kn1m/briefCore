@@ -5,6 +5,7 @@
     using brief.Controllers.Models;
     using brief.Library.Entities;
     using brief.Library.Helpers;
+    using Helpers;
 
     public class EditionProfile : Profile
     {
