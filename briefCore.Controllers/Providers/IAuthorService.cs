@@ -1,9 +1,9 @@
-﻿namespace brief.Controllers.Providers
+﻿namespace briefCore.Controllers.Providers
 {
     using System;
     using System.Threading.Tasks;
-    using Models;
-    using Models.BaseEntities;
+    using brief.Controllers.Models;
+    using brief.Controllers.Models.BaseEntities;
 
     public interface IAuthorService
     {

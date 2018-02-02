@@ -21,8 +21,6 @@
             builder.RegisterType<HeaderSettings>()
                 .As<IHeaderSettings>()
                 .AsSelf();
-
-            //builder.RegisterApiControllers(typeof(BookController).Assembly);
                   
             builder.RegisterType<EditionController>()
                 .WithParameters(

@@ -1,4 +1,4 @@
-﻿namespace brief.Controllers.Controllers
+﻿namespace briefCore.Controllers.Controllers
 {
     public class EditionFileController
     {
