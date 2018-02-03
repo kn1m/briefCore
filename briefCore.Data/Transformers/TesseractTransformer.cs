@@ -42,7 +42,7 @@
                             var text = page.GetText();
                             Console.WriteLine("Mean confidence: {0}", page.GetMeanConfidence());
 
-                            result += text;
+                            //result += text;
                             Console.WriteLine("Text (GetText): \r\n{0}", text);
                             Console.WriteLine("Text (iterator):");
                             using (var iter = page.GetIterator())

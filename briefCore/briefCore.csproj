@@ -4,6 +4,7 @@
     <NoWarn>$(NoWarn);NU1605</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="Controllers" />
     <Folder Include="Modules" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
