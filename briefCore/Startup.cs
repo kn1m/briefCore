@@ -44,9 +44,6 @@
                 c.SwaggerDoc("v1", new Info { Title = "brief API", Version = "v1" });
             });
             
-            services.AddMvc().AddWebApiConventions().AddApplicationPart(typeof(BaseImageUploadController).Assembly)
-                .AddControllersAsServices();
-            
             services.AddOData();
             
             services.AddMvcCore(options =>
@@ -60,6 +57,11 @@
                     inputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
                 }
             });
+            
+            services.AddMvc().AddWebApiConventions().AddApplicationPart(typeof(BaseImageUploadController).Assembly)
+                .AddControllersAsServices();
+            
+
             
             var containerBuilder = new ContainerBuilder();
             

@@ -14,6 +14,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Models;
 
+    [Route("api/[controller]/[action]")]
     public class EditionController : BaseImageUploadController
     {
         private readonly IEditionService _editionService;
