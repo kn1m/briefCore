@@ -4,8 +4,8 @@
     using System.Linq;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    using Controllers.Models;
-    using Controllers.Models.RetrieveModels;
+    using briefCore.Controllers.Models;
+    using briefCore.Controllers.Models.RetrieveModels;
     using Controllers.Providers;
     using Helpers;
     using Repositories;

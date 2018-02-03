@@ -1,9 +1,10 @@
 ﻿using System.Net;
 using System.Net.Http;
-using brief.Controllers.Models.BaseEntities;
 
 namespace briefCore.Controllers.Extensions
 {
+    using Models.BaseEntities;
+
     public static class BaseResponseExtensions
     {
         public static HttpResponseMessage CreateRespose(this BaseResponseMessage result, HttpStatusCode success,

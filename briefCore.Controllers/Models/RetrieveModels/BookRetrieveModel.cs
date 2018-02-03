@@ -1,4 +1,4 @@
-﻿namespace brief.Controllers.Models.RetrieveModels
+﻿namespace briefCore.Controllers.Models.RetrieveModels
 {
     using System.Collections.Generic;
 

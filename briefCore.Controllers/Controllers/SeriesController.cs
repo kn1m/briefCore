@@ -4,11 +4,12 @@
     using System.Net;
     using System.Net.Http;
     using System.Threading.Tasks;
-    using brief.Controllers.Models;
     using brief.Controllers.Providers;
     using Extensions;
     using Microsoft.AspNetCore.Mvc;
+    using Models;
 
+    [Route("api/[controller]/[action]")]
     public class SeriesController : Controller
     {
         private readonly ISeriesService _seriesService;

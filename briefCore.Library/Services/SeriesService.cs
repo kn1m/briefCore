@@ -5,12 +5,12 @@
     using System.Linq;
     using System.Threading.Tasks;
     using AutoMapper;
-    using brief.Controllers.Models;
-    using brief.Controllers.Models.BaseEntities;
     using brief.Controllers.Providers;
     using brief.Library.Helpers;
     using brief.Library.Repositories;
     using brief.Library.Services.BaseServices;
+    using Controllers.Models;
+    using Controllers.Models.BaseEntities;
     using Entities;
 
     public class SeriesService : BaseFileService, ISeriesService

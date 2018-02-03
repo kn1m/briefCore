@@ -2,8 +2,8 @@
 {
     using System;
     using System.Linq;
-    using Models;
-    using Models.RetrieveModels;
+    using briefCore.Controllers.Models;
+    using briefCore.Controllers.Models.RetrieveModels;
 
     public interface IFilterService
     {

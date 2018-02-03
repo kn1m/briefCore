@@ -4,9 +4,9 @@
     using System.Net;
     using System.Net.Http;
     using System.Net.Http.Headers;
-    using brief.Controllers.Models;
     using Microsoft.AspNetCore.StaticFiles;
-    
+    using Models;
+
     public static class HttpResponseMessageExtensions
     {
         public static HttpResponseMessage RetrieveContentFromCover(this HttpResponseMessage response, CoverModel cover)

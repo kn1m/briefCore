@@ -4,12 +4,13 @@
     using System.Net;
     using System.Net.Http;
     using System.Threading.Tasks;
-    using brief.Controllers.Models;
     using brief.Controllers.Providers;
     using Extensions;
     using Microsoft.AspNetCore.Mvc;
+    using Models;
     using Providers;
 
+    [Route("api/[controller]/[action]")]
     public class AuthorController : Controller
     {
         private readonly IAuthorService _authorService;

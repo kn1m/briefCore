@@ -1,4 +1,4 @@
-﻿namespace brief.Controllers.Models
+﻿namespace briefCore.Controllers.Models
 {
     public enum NoteTypeModel : byte
     {

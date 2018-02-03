@@ -2,9 +2,9 @@
 {
     using System;
     using AutoMapper;
-    using brief.Controllers.Models;
-    using brief.Controllers.Models.RetrieveModels;
     using brief.Library.Entities;
+    using Controllers.Models;
+    using Controllers.Models.RetrieveModels;
 
     public class BookProfile : Profile
     {

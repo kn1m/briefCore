@@ -3,18 +3,15 @@
     using System;
     using Autofac;
     using Autofac.Extensions.DependencyInjection;
-    using brief.Controllers.Models;
-    using brief.Controllers.Models.RetrieveModels;
     using Controllers.Controllers.BaseControllers;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Data.Contexts;
-    using Microsoft.AspNet.OData.Builder;
-    using Microsoft.AspNet.OData.Extensions;
     using Microsoft.AspNetCore.Http.Features;
     using Modules;
+    using Swashbuckle.AspNetCore.Swagger;
 
     public class Startup
     {
@@ -33,9 +30,16 @@
                 options.MultipartBodyLengthLimit = 100000000;
             });
             
-            services.AddOData();
+            services.AddRouting(options => options.LowercaseUrls = true);
             
-            services.AddMvc().AddApplicationPart(typeof(BaseImageUploadController).Assembly)
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "brief API", Version = "v1" });
+            });
+            
+            //services.AddOData();
+            
+            services.AddMvc().AddWebApiConventions().AddApplicationPart(typeof(BaseImageUploadController).Assembly)
                 .AddControllersAsServices();
             
             var containerBuilder = new ContainerBuilder();
@@ -43,7 +47,6 @@
             containerBuilder.RegisterModule(new CommonModule());
             containerBuilder.RegisterModule(new DataModule(Configuration));
             containerBuilder.RegisterModule(new ServicesModule(Configuration));
-            containerBuilder.RegisterModule(new ControllersModule());
             
             containerBuilder.Populate(services);
             
@@ -59,21 +62,29 @@
                 app.UseDeveloperExceptionPage();
             }
             
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "brief API V1");
+            });
+            
             using (var client = new ApplicationDbContext(Configuration.GetConnectionString("briefContext")))
             {
                 client.Database.EnsureCreated();
             }
 
-            var builder = new ODataConventionModelBuilder(app.ApplicationServices);
-            builder.EnableLowerCamelCase();
-            builder.EntitySet<BookRetrieveModel>("books");
-            builder.EntitySet<EditionModel>("editions");
-            builder.EntitySet<CoverModel>("covers");
+            //var builder = new ODataConventionModelBuilder(app.ApplicationServices);
+            //builder.EnableLowerCamelCase();
+            //builder.EntitySet<BookRetrieveModel>("books");
+            //builder.EntitySet<EditionModel>("editions");
+            //builder.EntitySet<CoverModel>("covers");
             
             app.UseMvc(routes =>
             {
-                //routes.MapRoute("default_route", "api/[controller]/{action}/{id?}");
-                routes.MapODataServiceRoute("odata", null, builder.GetEdmModel());
+                routes.MapWebApiRoute("default_route", "api/{controller}/{action}/{id?}");
+                //routes.MapODataServiceRoute("odata", null, builder.GetEdmModel());
             });
         }
         

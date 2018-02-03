@@ -1,10 +1,9 @@
-﻿namespace briefCore.Controllers.Controllers
+﻿/*namespace briefCore.Controllers.Controllers
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
-    using brief.Controllers.Models.RetrieveModels;
     using brief.Controllers.Providers;
     using Extensions;
     using Microsoft.AspNet.OData;
@@ -12,6 +11,7 @@
     using Microsoft.AspNet.OData.Routing;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Models.RetrieveModels;
 
     public class FilterController : ODataController
     {
@@ -46,7 +46,7 @@
                 results as IEnumerable<BookRetrieveModel>,
                 Request.ODataProperties().NextLink,
                 Request.ODataProperties().TotalCount);
-                */
+                //
         }
 
         [HttpGet]
@@ -60,4 +60,4 @@
             return response.RetrieveContentFromCover(cover);
         }
     }
-}
+}*/

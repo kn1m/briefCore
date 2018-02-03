@@ -1,8 +1,11 @@
 ﻿namespace briefCore.Modules
 {
+    using System.Collections.Generic;
     using System.IO.Abstractions;
     using Autofac;
     using AutoMapper;
+    using Controllers.Helpers;
+    using Controllers.Helpers.Base;
     using Library.Entities.Profiles;
 
     public class CommonModule : Module
@@ -18,6 +21,16 @@
 
             builder.RegisterType<FileSystem>()
                 .As<IFileSystem>();
+            
+            var recognitionLanguagesSettings = new HeaderSettings
+            {
+                AcceptableValuesForHeader =
+                    new Dictionary<string, string[]> {{ "Target-Language", new[] {"ukr", "rus", "eng"} }}
+            };
+            
+            builder.Register(h => recognitionLanguagesSettings)
+                .As<IHeaderSettings>()
+                .InstancePerLifetimeScope();
         }
     }
 }

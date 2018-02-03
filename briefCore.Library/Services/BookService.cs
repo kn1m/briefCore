@@ -4,10 +4,10 @@
     using System.IO.Abstractions;
     using System.Threading.Tasks;
     using AutoMapper;
+    using briefCore.Controllers.Models;
+    using briefCore.Controllers.Models.BaseEntities;
     using briefCore.Library.Entities;
     using BaseServices;
-    using Controllers.Models;
-    using Controllers.Models.BaseEntities;
     using Controllers.Providers;
     using Entities;
     using Helpers;

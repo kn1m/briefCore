@@ -2,8 +2,8 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Models;
-    using Models.BaseEntities;
+    using briefCore.Controllers.Models;
+    using briefCore.Controllers.Models.BaseEntities;
 
     public interface IExportService
     {

@@ -2,7 +2,7 @@
 {
     using System.Net;
     using System.Net.Http;
-    using brief.Controllers.Models.BaseEntities;
+    using Models.BaseEntities;
 
     public static class ResponseMessageExtensions
     {

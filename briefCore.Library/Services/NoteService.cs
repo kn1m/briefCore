@@ -2,8 +2,8 @@
 {
     using System;
     using System.Threading.Tasks;
-    using Controllers.Models;
-    using Controllers.Models.BaseEntities;
+    using briefCore.Controllers.Models;
+    using briefCore.Controllers.Models.BaseEntities;
     using Controllers.Providers;
     using Repositories;
 

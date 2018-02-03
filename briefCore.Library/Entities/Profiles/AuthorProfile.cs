@@ -2,7 +2,7 @@
 {
     using System;
     using AutoMapper;
-    using brief.Controllers.Models;
+    using Controllers.Models;
 
     public class AuthorProfile : Profile
     {

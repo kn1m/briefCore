@@ -1,4 +1,4 @@
-﻿namespace brief.Controllers.Models.BaseEntities
+﻿namespace briefCore.Controllers.Models.BaseEntities
 {
     using System;
 

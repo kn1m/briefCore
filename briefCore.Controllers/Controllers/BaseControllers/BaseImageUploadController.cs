@@ -9,13 +9,13 @@
     using System.Net.Http;
     using System.Threading.Tasks;
     using brief.Controllers.Helpers;
-    using brief.Controllers.Models;
-    using brief.Controllers.Models.BaseEntities;
     using Extensions;
     using Helpers.Base;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Http.Extensions;
     using Microsoft.AspNetCore.Mvc;
+    using Models;
+    using Models.BaseEntities;
 
     public abstract class BaseImageUploadController : Controller
     {
@@ -59,7 +59,7 @@
                 {
                     if (formFile.Length > 0)
                     {
-                        using (var stream = new FileStream(currentProviderPath, FileMode.Create))
+                        using (var stream = new FileStream(currentProviderPath + "/" + formFile.FileName, FileMode.Create))
                         {
                             await formFile.CopyToAsync(stream);
                         }
@@ -82,11 +82,11 @@
 
                 var resultingDict = Enumerable.Range(0, results.Length).ToDictionary(i => files[i], i => results[i].RawData);
                 
-                return new HttpResponseMessage{StatusCode = HttpStatusCode.OK, ReasonPhrase = resultingDict.GetString()};
+                return new HttpResponseMessage{ StatusCode = HttpStatusCode.OK, Content = new StringContent(resultingDict.GetString()) } ;
             }
             catch (Exception e)
             {
-                return new HttpResponseMessage{StatusCode = HttpStatusCode.InternalServerError, ReasonPhrase = e.Message};
+                return new HttpResponseMessage{ StatusCode = HttpStatusCode.InternalServerError, ReasonPhrase = e.Message } ;
             }
         }
 
@@ -105,7 +105,6 @@
             {
                 return new HttpResponseMessage { StatusCode = HttpStatusCode.UnsupportedMediaType };
             }
-
 
             if (imageFiles.Count != 1)
             {

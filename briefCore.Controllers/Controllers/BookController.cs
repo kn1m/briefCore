@@ -4,13 +4,14 @@
     using System.Net;
     using System.Net.Http;
     using System.Threading.Tasks;
-    using brief.Controllers.Models;
-    using brief.Controllers.Models.BaseEntities;
     using brief.Controllers.Providers;
     using Extensions;
     using Helpers.Base;
     using Microsoft.AspNetCore.Mvc;
+    using Models;
+    using Models.BaseEntities;
 
+    [Route("api/[controller]/[action]")]
     public class BookController : Controller
     {
         private readonly IBookService _bookService;

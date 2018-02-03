@@ -13,6 +13,7 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
 
+    [Route("api/[controller]/[action]")]
     public class CoverController : BaseImageUploadController
     {
         private readonly ICoverService _coverService;

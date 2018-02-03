@@ -5,13 +5,13 @@
     using System.Threading.Tasks;
     using AutoMapper;
     using brief.Controllers.Helpers;
-    using brief.Controllers.Models;
-    using brief.Controllers.Models.BaseEntities;
     using brief.Controllers.Providers;
     using brief.Library.Helpers;
     using brief.Library.Repositories;
     using brief.Library.Transformers;
     using BaseServices;
+    using Controllers.Models;
+    using Controllers.Models.BaseEntities;
     using Entities;
     using Helpers;
 

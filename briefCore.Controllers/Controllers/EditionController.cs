@@ -6,13 +6,13 @@
     using System.Net;
     using System.Net.Http;
     using System.Threading.Tasks;
-    using brief.Controllers.Models;
     using brief.Controllers.Providers;
     using BaseControllers;
     using Extensions;
     using Helpers.Base;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Models;
 
     public class EditionController : BaseImageUploadController
     {
@@ -22,7 +22,7 @@
         public EditionController(IEditionService editionService, IFileSystem fileSystem, IHeaderSettings headerSettings) : base(fileSystem)
         {
             _editionService = editionService ?? throw new ArgumentNullException(nameof(editionService));
-            _headerSettings = headerSettings ?? throw new ArgumentException(nameof(headerSettings));
+            _headerSettings = headerSettings ?? throw new ArgumentNullException(nameof(headerSettings));
         }
 
         [HttpPost]

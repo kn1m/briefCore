@@ -2,8 +2,8 @@
 {
     using System;
     using System.Threading.Tasks;
-    using brief.Controllers.Models;
-    using brief.Controllers.Models.BaseEntities;
+    using Models;
+    using Models.BaseEntities;
 
     public interface IAuthorService
     {
