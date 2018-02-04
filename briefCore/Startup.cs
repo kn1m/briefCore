@@ -37,42 +37,9 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            XmlDocument log4netConfig = new XmlDocument();
-            log4netConfig.Load(File.OpenRead("log4net.config"));
-            var repo = LogManager.CreateRepository(Assembly.GetEntryAssembly(), typeof(log4net.Repository.Hierarchy.Hierarchy));
-            log4net.Config.XmlConfigurator.Configure(repo, log4netConfig["log4net"]);
+            ConfigureLogging();
+            ConfigureWebApi(services);
             
-            services.Configure<FormOptions>(options =>
-            {
-                options.MultipartBodyLengthLimit = 300000000;
-            });
-            
-            services.AddRouting(options => options.LowercaseUrls = true);
-            
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new Info { Title = "brief API", Version = "v1" });
-            });
-            
-            services.AddOData();
-            
-            services.AddMvcCore(options =>
-            {
-                foreach (var outputFormatter in options.OutputFormatters.OfType<ODataOutputFormatter>().Where(_ => _.SupportedMediaTypes.Count == 0))
-                {
-                    outputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
-                }
-                foreach (var inputFormatter in options.InputFormatters.OfType<ODataInputFormatter>().Where(_ => _.SupportedMediaTypes.Count == 0))
-                {
-                    inputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
-                }
-            });
-            
-            services.AddMvc(config => { config.Filters.Add(new ActionLogger()); })
-                .AddWebApiConventions()
-                .AddApplicationPart(typeof(BaseImageUploadController).Assembly)
-                .AddControllersAsServices();
-                        
             var containerBuilder = new ContainerBuilder();
             
             containerBuilder.RegisterModule(new CommonModule());
@@ -117,6 +84,48 @@
                 routes.MapWebApiRoute("default", "api/{controller}/{action}/{id?}");
                 routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
             });
+        }
+
+        private void ConfigureLogging()
+        {
+            XmlDocument log4NetConfig = new XmlDocument();
+            log4NetConfig.Load(File.OpenRead("log4net.config"));
+            var repo = LogManager.CreateRepository(Assembly.GetEntryAssembly(), typeof(log4net.Repository.Hierarchy.Hierarchy));
+            log4net.Config.XmlConfigurator.Configure(repo, log4NetConfig["log4net"]);    
+        }
+
+        private void ConfigureWebApi(IServiceCollection services)
+        {
+            services.Configure<FormOptions>(options =>
+            {
+                options.MultipartBodyLengthLimit = 300000000;
+            });
+            
+            services.AddRouting(options => options.LowercaseUrls = true);
+            
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "brief API", Version = "v1" });
+            });
+            
+            services.AddOData();
+            
+            services.AddMvcCore(options =>
+            {
+                foreach (var outputFormatter in options.OutputFormatters.OfType<ODataOutputFormatter>().Where(_ => _.SupportedMediaTypes.Count == 0))
+                {
+                    outputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
+                }
+                foreach (var inputFormatter in options.InputFormatters.OfType<ODataInputFormatter>().Where(_ => _.SupportedMediaTypes.Count == 0))
+                {
+                    inputFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("application/prs.odatatestxx-odata"));
+                }
+            });
+            
+            services.AddMvc(config => { config.Filters.Add(new ActionLogger()); })
+                .AddWebApiConventions()
+                .AddApplicationPart(typeof(BaseImageUploadController).Assembly)
+                .AddControllersAsServices();
         }
     }
 }
