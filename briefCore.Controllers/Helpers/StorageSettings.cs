@@ -1,4 +1,4 @@
-﻿namespace brief.Controllers.Helpers
+﻿namespace briefCore.Controllers.Helpers
 {
     public class StorageSettings
     {

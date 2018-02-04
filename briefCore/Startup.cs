@@ -1,10 +1,14 @@
 ﻿namespace briefCore
 {
     using System;
+    using System.IO;
     using System.Linq;
+    using System.Reflection;
+    using System.Xml;
     using Autofac;
     using Autofac.Extensions.DependencyInjection;
     using Controllers.Controllers.BaseControllers;
+    using Controllers.Filters;
     using Controllers.Models;
     using Controllers.Models.RetrieveModels;
     using Microsoft.AspNetCore.Builder;
@@ -12,6 +16,7 @@
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Data.Contexts;
+    using log4net;
     using Microsoft.AspNet.OData.Builder;
     using Microsoft.AspNet.OData.Extensions;
     using Microsoft.AspNet.OData.Formatter;
@@ -32,6 +37,11 @@
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            XmlDocument log4netConfig = new XmlDocument();
+            log4netConfig.Load(File.OpenRead("log4net.config"));
+            var repo = LogManager.CreateRepository(Assembly.GetEntryAssembly(), typeof(log4net.Repository.Hierarchy.Hierarchy));
+            log4net.Config.XmlConfigurator.Configure(repo, log4netConfig["log4net"]);
+            
             services.Configure<FormOptions>(options =>
             {
                 options.MultipartBodyLengthLimit = 300000000;
@@ -58,11 +68,11 @@
                 }
             });
             
-            services.AddMvc().AddWebApiConventions().AddApplicationPart(typeof(BaseImageUploadController).Assembly)
+            services.AddMvc(config => { config.Filters.Add(new ActionLogger()); })
+                .AddWebApiConventions()
+                .AddApplicationPart(typeof(BaseImageUploadController).Assembly)
                 .AddControllersAsServices();
-            
-
-            
+                        
             var containerBuilder = new ContainerBuilder();
             
             containerBuilder.RegisterModule(new CommonModule());
@@ -104,8 +114,8 @@
             
             app.UseMvc(routes =>
             {
-                routes.MapWebApiRoute("default_route", "api/{controller}/{action}/{id?}");
-                routes.MapODataServiceRoute("ODataRoute", "odata", builder.GetEdmModel());
+                routes.MapWebApiRoute("default", "api/{controller}/{action}/{id?}");
+                routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
             });
         }
     }

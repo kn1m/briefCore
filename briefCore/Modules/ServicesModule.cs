@@ -5,10 +5,10 @@
     using System.Drawing.Imaging;
     using Autofac;
     using Autofac.Core;
-    using brief.Controllers.Helpers;
     using brief.Controllers.Providers;
     using brief.Library.Repositories;
     using brief.Library.Services;
+    using Controllers.Helpers;
     using Controllers.Providers;
     using Data.Repositories;
     using Library.Helpers;

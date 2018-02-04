@@ -1,6 +1,6 @@
 ﻿namespace brief.Controllers.Providers
 {
-    using Helpers;
+    using briefCore.Controllers.Helpers;
 
     public interface IImageService
     {
