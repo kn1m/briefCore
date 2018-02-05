@@ -9,6 +9,7 @@
     using Autofac.Extensions.DependencyInjection;
     using Controllers.Controllers.BaseControllers;
     using Controllers.Filters;
+    using Controllers.Middleware;
     using Controllers.Models;
     using Controllers.Models.RetrieveModels;
     using Microsoft.AspNetCore.Builder;
@@ -78,6 +79,8 @@
             builder.EntitySet<BookRetrieveModel>("books");
             builder.EntitySet<EditionModel>("editions");
             builder.EntitySet<CoverModel>("covers");
+            
+            app.UseMiddleware(typeof(ExceptionHandlingMiddleware));
             
             app.UseMvc(routes =>
             {
