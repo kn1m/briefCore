@@ -8,6 +8,7 @@
     using Extensions;
     using Microsoft.AspNetCore.Mvc;
     using Models;
+    using Providers;
 
     [Route("api/[controller]/[action]")]
     public class PublisherController : Controller

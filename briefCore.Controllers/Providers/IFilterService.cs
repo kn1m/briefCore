@@ -1,9 +1,9 @@
-﻿namespace brief.Controllers.Providers
+﻿namespace briefCore.Controllers.Providers
 {
     using System;
     using System.Linq;
-    using briefCore.Controllers.Models;
-    using briefCore.Controllers.Models.RetrieveModels;
+    using Models;
+    using Models.RetrieveModels;
 
     public interface IFilterService
     {

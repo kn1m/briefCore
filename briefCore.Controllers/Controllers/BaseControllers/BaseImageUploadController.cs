@@ -59,7 +59,7 @@
                 {
                     if (formFile.Length > 0)
                     {
-                        using (var stream = new FileStream(currentProviderPath + "/" + formFile.FileName, FileMode.Create))
+                        using (var stream = new FileStream(_fileSystem.Path.Combine(currentProviderPath, formFile.FileName), FileMode.Create))
                         {
                             await formFile.CopyToAsync(stream);
                         }

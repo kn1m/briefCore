@@ -11,6 +11,7 @@
     using brief.Library.Services.BaseServices;
     using Controllers.Models;
     using Controllers.Models.BaseEntities;
+    using Controllers.Providers;
     using Entities;
 
     public class SeriesService : BaseFileService, ISeriesService

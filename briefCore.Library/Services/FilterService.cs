@@ -6,6 +6,7 @@
     using AutoMapper.QueryableExtensions;
     using briefCore.Controllers.Models;
     using briefCore.Controllers.Models.RetrieveModels;
+    using briefCore.Controllers.Providers;
     using Controllers.Providers;
     using Helpers;
     using Repositories;

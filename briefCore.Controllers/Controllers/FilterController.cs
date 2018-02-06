@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
-    using brief.Controllers.Providers;
     using Extensions;
     using Microsoft.AspNet.OData;
     using Microsoft.AspNet.OData.Extensions;
@@ -12,6 +11,7 @@
     using Microsoft.AspNet.OData.Routing;
     using Microsoft.AspNetCore.Mvc;
     using Models.RetrieveModels;
+    using Providers;
 
     public class FilterController : ODataController
     {

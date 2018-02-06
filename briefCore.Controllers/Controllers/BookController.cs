@@ -10,6 +10,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Models;
     using Models.BaseEntities;
+    using Providers;
 
     [Route("api/[controller]/[action]")]
     public class BookController : Controller

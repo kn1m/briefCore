@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
     using briefCore.Controllers.Models;
     using briefCore.Controllers.Models.BaseEntities;
+    using briefCore.Controllers.Providers;
     using Controllers.Providers;
     using Repositories;
 
