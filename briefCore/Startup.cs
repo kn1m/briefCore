@@ -40,17 +40,8 @@
         {
             ConfigureLogging();
             ConfigureWebApi(services);
-            
-            var containerBuilder = new ContainerBuilder();
-            
-            containerBuilder.RegisterModule(new CommonModule());
-            containerBuilder.RegisterModule(new DataModule(Configuration));
-            containerBuilder.RegisterModule(new ServicesModule(Configuration));
-            
-            containerBuilder.Populate(services);
-            
-            var container = containerBuilder.Build();
-            return new AutofacServiceProvider(container);
+
+            return CreateResolver(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -82,10 +73,11 @@
             
             app.UseMiddleware(typeof(ExceptionHandlingMiddleware));
             
-            app.UseMvc(routes =>
+            app.UseMvc(routeBuilder =>
             {
-                routes.MapWebApiRoute("default", "api/{controller}/{action}/{id?}");
-                routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
+                routeBuilder.Count().Filter().OrderBy().Expand().Select().MaxTop(null);
+                routeBuilder.MapWebApiRoute("default", "api/{controller}/{action}/{id?}");
+                routeBuilder.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
             });
         }
 
@@ -129,6 +121,20 @@
                 .AddWebApiConventions()
                 .AddApplicationPart(typeof(BaseImageUploadController).Assembly)
                 .AddControllersAsServices();
+        }
+
+        private IServiceProvider CreateResolver(IServiceCollection services)
+        {
+            var containerBuilder = new ContainerBuilder();
+            
+            containerBuilder.RegisterModule(new CommonModule());
+            containerBuilder.RegisterModule(new DataModule(Configuration));
+            containerBuilder.RegisterModule(new ServicesModule(Configuration));
+            
+            containerBuilder.Populate(services);
+            
+            var container = containerBuilder.Build();
+            return new AutofacServiceProvider(container);
         }
     }
 }

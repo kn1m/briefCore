@@ -1,11 +1,13 @@
 ﻿namespace briefCore.Controllers.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
     using brief.Controllers.Providers;
     using Extensions;
     using Microsoft.AspNet.OData;
+    using Microsoft.AspNet.OData.Extensions;
     using Microsoft.AspNet.OData.Query;
     using Microsoft.AspNet.OData.Routing;
     using Microsoft.AspNetCore.Mvc;
@@ -23,7 +25,7 @@
         [HttpGet]
         [EnableQuery]
         [ODataRoute("books({key})")]
-        public SingleResult<BookRetrieveModel> Get([FromODataUri] Guid key)
+        public SingleResult<BookRetrieveModel> GetBook([FromODataUri] Guid key)
         {
             IQueryable<BookRetrieveModel> result = _filterService.GetBookById(key);
 
@@ -33,18 +35,14 @@
         [HttpGet]
         [EnableQuery]
         [ODataRoute("books")]
-        public PageResult<BookRetrieveModel> Get(ODataQueryOptions<BookRetrieveModel> options)
+        public PageResult<BookRetrieveModel> GetBooks(ODataQueryOptions<BookRetrieveModel> options)
         {
             IQueryable results = options.ApplyTo(_filterService.GetBooks(), new ODataQuerySettings { PageSize = 5 });
             
-            return null;
-            //TODO: fix
-            /*
             return new PageResult<BookRetrieveModel>(
                 results as IEnumerable<BookRetrieveModel>,
-                Request.ODataProperties().NextLink,
-                Request.ODataProperties().TotalCount);
-                */
+                Request.ODataFeature().NextLink,
+                Request.ODataFeature().TotalCount);
         }
 
         [HttpGet]

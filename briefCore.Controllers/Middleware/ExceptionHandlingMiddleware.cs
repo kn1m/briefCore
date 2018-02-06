@@ -17,7 +17,7 @@
             _next = next ?? throw new ArgumentNullException(nameof(next));
         }
 
-        public async Task Invoke(HttpContext context /* other scoped dependencies */)
+        public async Task Invoke(HttpContext context)
         {
             try
             {
@@ -32,12 +32,9 @@
         private Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
             var code = HttpStatusCode.InternalServerError;
-
-            //if (exception is Exception)
-            //{
-            //    code = HttpStatusCode.NotFound;
-            //}
-
+            
+            //TODO: handle exceptions of specific types
+            
             _logger.Error(exception.Message);
             
             var result = JsonConvert.SerializeObject(new { error = exception.Message });
