@@ -1,8 +1,8 @@
-﻿namespace brief.Library.Entities
+﻿namespace briefCore.Library.Entities
 {
     public enum NoteType : byte
     {
         Regular = 0,
-        Kindle = 1
+        EBook = 1
     }
 }

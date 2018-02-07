@@ -1,4 +1,4 @@
-﻿namespace brief.Library.Entities
+﻿namespace briefCore.Library.Entities
 {
     using System;
 
@@ -7,6 +7,5 @@
         public Guid Id { get; set; }
         public string Checksum { get; set; }
         public string Path { get; set; }
-        public DateTime CreatedOn { get; set; }
     }
 }
