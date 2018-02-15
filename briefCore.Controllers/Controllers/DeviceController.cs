@@ -2,6 +2,9 @@
 {
     public class DeviceController
     {
-        
+        public DeviceController()
+        {
+            
+        }
     }
 }
