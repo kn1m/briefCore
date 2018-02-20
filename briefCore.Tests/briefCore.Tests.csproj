@@ -5,4 +5,7 @@
   <ItemGroup>
     <Folder Include="Library" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="3.9.0" />
+  </ItemGroup>
 </Project>
