@@ -12,5 +12,6 @@
         public int? Page { get; set; }
         public DateTime? CreatedOn { get; set; }
         public NoteTypeModel NoteType { get; set; }
+        public Guid UserId { get; set; }
     }
 }
