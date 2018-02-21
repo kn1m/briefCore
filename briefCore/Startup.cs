@@ -1,9 +1,11 @@
 ﻿namespace briefCore
 {
     using System;
+    using System.IdentityModel.Tokens.Jwt;
     using System.IO;
     using System.Linq;
     using System.Reflection;
+    using System.Text;
     using System.Xml;
     using Autofac;
     using Autofac.Extensions.DependencyInjection;
@@ -21,8 +23,10 @@
     using Microsoft.AspNet.OData.Builder;
     using Microsoft.AspNet.OData.Extensions;
     using Microsoft.AspNet.OData.Formatter;
+    using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Http.Features;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.IdentityModel.Tokens;
     using Microsoft.Net.Http.Headers;
     using Modules;
     using Swashbuckle.AspNetCore.Swagger;
@@ -41,6 +45,7 @@
         {
             ConfigureLogging();
             ConfigureIdentity(services);
+            ConfigureAuthentication(services);
             ConfigureWebApi(services);
 
             return CreateResolver(services);
@@ -74,6 +79,8 @@
             builder.EntitySet<CoverModel>("covers");
             
             app.UseMiddleware(typeof(ExceptionHandlingMiddleware));
+            
+            app.UseAuthentication();
             
             app.UseMvc(routeBuilder =>
             {
@@ -132,9 +139,29 @@
                 .AddDefaultTokenProviders();            
         }
 
-        private void ConfigureAuthentication()
+        private void ConfigureAuthentication(IServiceCollection services)
         {
-            
+            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear(); // => remove default claims
+            services
+                .AddAuthentication(options =>
+                {
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                    
+                })
+                .AddJwtBearer(cfg =>
+                {
+                    cfg.RequireHttpsMetadata = false;
+                    cfg.SaveToken = true;
+                    cfg.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidIssuer = Configuration["JwtIssuer"],
+                        ValidAudience = Configuration["JwtIssuer"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtKey"])),
+                        ClockSkew = TimeSpan.Zero // remove delay of token when expire
+                    };
+                });
         }
 
         private IServiceProvider CreateResolver(IServiceCollection services)
