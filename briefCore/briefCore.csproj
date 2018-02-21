@@ -2,6 +2,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <NoWarn>$(NoWarn);NU1605</NoWarn>
+    <UserSecretsId>briefCore-9d01aa80-339a-43f7-b403-efa46c4dcc69</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Controllers" />

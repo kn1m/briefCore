@@ -22,6 +22,7 @@
     using Microsoft.AspNet.OData.Extensions;
     using Microsoft.AspNet.OData.Formatter;
     using Microsoft.AspNetCore.Http.Features;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.Net.Http.Headers;
     using Modules;
     using Swashbuckle.AspNetCore.Swagger;
@@ -39,6 +40,7 @@
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             ConfigureLogging();
+            ConfigureIdentity(services);
             ConfigureWebApi(services);
 
             return CreateResolver(services);
@@ -121,6 +123,18 @@
                 .AddWebApiConventions()
                 .AddApplicationPart(typeof(BaseImageUploadController).Assembly)
                 .AddControllersAsServices();
+        }
+
+        private void ConfigureIdentity(IServiceCollection services)
+        {
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();            
+        }
+
+        private void ConfigureAuthentication()
+        {
+            
         }
 
         private IServiceProvider CreateResolver(IServiceCollection services)
