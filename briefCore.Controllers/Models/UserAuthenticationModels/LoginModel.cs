@@ -1,6 +1,6 @@
-﻿namespace briefCore.Controllers.Models.UseAuthenticationModels
+﻿namespace briefCore.Controllers.Models.UserAuthenticationModels
 {
-    public class RegisterModel
+    public class LoginModel
     {
         public string Email { get; set; }
         public string Password { get; set; }

@@ -40,6 +40,11 @@
                 .WithParameter(new NamedParameter("connectionString", briefConnectionString))
                 .InstancePerLifetimeScope();
 
+            builder.RegisterType<ApplicationDbContext>()
+                .WithParameter(new NamedParameter("connectionString", briefConnectionString))
+                .InstancePerLifetimeScope()
+                .AsSelf();
+            
             builder.RegisterType<CoverRepository>()
                 .As<ICoverRepository>()
                 .WithParameter(new TypedParameter(typeof(string), briefConnectionString));
