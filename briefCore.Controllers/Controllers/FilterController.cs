@@ -9,10 +9,12 @@
     using Microsoft.AspNet.OData.Extensions;
     using Microsoft.AspNet.OData.Query;
     using Microsoft.AspNet.OData.Routing;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Models.RetrieveModels;
     using Providers;
 
+    [Authorize]
     public class FilterController : ODataController
     {
         private readonly IFilterService _filterService;

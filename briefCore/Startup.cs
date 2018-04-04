@@ -159,7 +159,8 @@
                         ValidIssuer = Configuration["Authentication:JwtIssuer"],
                         ValidAudience = Configuration["Authentication:JwtIssuer"],
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Authentication:JwtKey"])),
-                        ClockSkew = TimeSpan.FromHours(Convert.ToDouble(Configuration["Authentication:JwtExpireHours"])) //TimeSpan.Zero remove delay of token when expire
+                        ClockSkew = TimeSpan.FromHours(Convert.ToDouble(Configuration["Authentication:JwtExpireHours"])) 
+                        //TimeSpan.Zero remove delay of token when expire
                     };
                 });
         }

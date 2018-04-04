@@ -20,11 +20,9 @@
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IConfiguration _configuration;
 
-        public AccountController(
-            UserManager<IdentityUser> userManager,
-            SignInManager<IdentityUser> signInManager,
-            IConfiguration configuration
-            )
+        public AccountController(UserManager<IdentityUser> userManager,
+                                 SignInManager<IdentityUser> signInManager,
+                                 IConfiguration configuration)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -73,13 +71,13 @@
                 new Claim(ClaimTypes.NameIdentifier, user.Id)
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtKey"]));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Authentication:JwtKey"]));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-            var expires = DateTime.Now.AddHours(Convert.ToDouble(_configuration["JwtExpireHours"]));
+            var expires = DateTime.Now.AddHours(Convert.ToDouble(_configuration["Authentication:JwtExpireHours"]));
 
             var token = new JwtSecurityToken(
-                _configuration["JwtIssuer"],
-                _configuration["JwtIssuer"],
+                _configuration["Authentication:JwtIssuer"],
+                _configuration["Authentication:JwtIssuer"],
                 claims,
                 expires: expires,
                 signingCredentials: creds

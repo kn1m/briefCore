@@ -35,7 +35,7 @@
             
             //TODO: handle exceptions of specific types
             
-            _logger.Error(exception.Message);
+            _logger.Error(exception.Message + Environment.NewLine + exception.StackTrace);
             
             var result = JsonConvert.SerializeObject(new { error = exception.Message });
             context.Response.ContentType = "application/json";

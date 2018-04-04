@@ -6,10 +6,12 @@
     using System.Threading.Tasks;
     using brief.Controllers.Providers;
     using Extensions;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Models;
     using Providers;
 
+    [Authorize]
     [Route("api/[controller]/[action]")]
     public class SeriesController : Controller
     {

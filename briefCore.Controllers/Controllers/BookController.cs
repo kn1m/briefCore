@@ -7,11 +7,13 @@
     using brief.Controllers.Providers;
     using Extensions;
     using Helpers.Base;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Models;
     using Models.BaseEntities;
     using Providers;
 
+    [Authorize]
     [Route("api/[controller]/[action]")]
     public class BookController : Controller
     {

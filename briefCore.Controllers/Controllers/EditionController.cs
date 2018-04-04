@@ -10,10 +10,12 @@
     using BaseControllers;
     using Extensions;
     using Helpers.Base;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Models;
 
+    [Authorize]
     [Route("api/[controller]/[action]")]
     public class EditionController : BaseImageUploadController
     {

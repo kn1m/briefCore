@@ -1,6 +1,10 @@
 ﻿namespace briefCore.Controllers.Controllers
 {
-    public class UserDeviceController
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+
+    [Authorize]
+    public class UserDeviceController : Controller
     {
         
     }
