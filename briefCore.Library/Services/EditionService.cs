@@ -12,6 +12,7 @@
     using Controllers.Helpers;
     using Controllers.Models;
     using Controllers.Models.BaseEntities;
+    using Controllers.Providers;
     using Entities;
     using Helpers;
 
@@ -108,6 +109,11 @@
             
             response.Id = id;
             return response;
+        }
+
+        public Task<BaseResponseMessage> UploadEditionFile(Guid id, string editionPath)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<BaseResponseMessage> CreateEdition(EditionModel edition)

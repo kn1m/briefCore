@@ -1,12 +1,12 @@
-﻿namespace brief.Library.Services
+﻿namespace briefCore.Library.Services
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
-    using briefCore.Controllers.Models;
-    using briefCore.Controllers.Models.BaseEntities;
-    using briefCore.Controllers.Providers;
+    using brief.Library.Repositories;
+    using Controllers.Models;
+    using Controllers.Models.BaseEntities;
     using Controllers.Providers;
-    using Repositories;
 
     public class NoteService : INoteService
     {
@@ -26,6 +26,16 @@
         }
 
         public Task<BaseResponseMessage> RemoveNote(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<BaseResponseMessage> ExportNotes(IList<NoteModel> notes, NoteTypeModel noteType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<BaseResponseMessage> SaveNotesFile(string notesFilePath, NoteTypeModel noteType)
         {
             throw new NotImplementedException();
         }

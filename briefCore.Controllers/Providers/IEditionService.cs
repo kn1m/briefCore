@@ -1,10 +1,9 @@
-﻿namespace brief.Controllers.Providers
+﻿namespace briefCore.Controllers.Providers
 {
     using System;
     using System.Threading.Tasks;
-    using briefCore.Controllers.Models;
-    using briefCore.Controllers.Models.BaseEntities;
-    using briefCore.Controllers.Providers;
+    using Models;
+    using Models.BaseEntities;
 
     public interface IEditionService : IImageService
     {
@@ -12,5 +11,7 @@
         Task<BaseResponseMessage> RetrieveEditionDataFromImage(ImageModel image);
         Task<BaseResponseMessage> UpdateEdition(EditionModel edition);
         Task<BaseResponseMessage> RemoveEdition(Guid id);
+
+        Task<BaseResponseMessage> UploadEditionFile(Guid id, string editionPath);
     }
 }
