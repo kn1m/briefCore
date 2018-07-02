@@ -4,6 +4,7 @@
     using System.Threading.Tasks;
     using brief.Library.Repositories;
     using Library.Entities;
+    using Library.Repositories;
 
     class EditionFileRepository : IEditionFileRepository
     {
@@ -12,12 +13,22 @@
             
         }
 
-        public Task<Guid> AddFile(EditionFile file)
+        public Task<EditionFile> GetEditionFile(Guid id)
         {
-            return null;
+            throw new NotImplementedException();
         }
 
-        public Task<EditionFile> GetFile()
+        public Task<Guid> CreateEditionFile(EditionFile editionFile)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Guid> UpdateEditionFile(EditionFile editionFile)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task RemoveEditionFile(EditionFile editionFile)
         {
             throw new NotImplementedException();
         }

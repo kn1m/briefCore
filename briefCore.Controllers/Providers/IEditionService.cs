@@ -8,10 +8,13 @@
     public interface IEditionService : IImageService
     {
         Task<BaseResponseMessage> CreateEdition(EditionModel edition);
-        Task<BaseResponseMessage> RetrieveEditionDataFromImage(ImageModel image);
         Task<BaseResponseMessage> UpdateEdition(EditionModel edition);
         Task<BaseResponseMessage> RemoveEdition(Guid id);
 
-        Task<BaseResponseMessage> UploadEditionFile(Guid id, string editionPath);
+        Task<BaseResponseMessage> RetrieveEditionDataFromImage(ImageModel image);
+        
+        Task<BaseResponseMessage> AddEditionFile(Guid id, string editionPath);
+        Task<BaseResponseMessage> UpdateEditionFile(Guid id, string editionPath);
+        Task<BaseResponseMessage> RemoveEditionFile(Guid id);
     }
 }

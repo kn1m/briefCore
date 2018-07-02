@@ -8,6 +8,7 @@
     using briefCore.Controllers.Models.BaseEntities;
     using briefCore.Controllers.Providers;
     using briefCore.Library.Entities;
+    using briefCore.Library.Repositories;
     using BaseServices;
     using Controllers.Providers;
     using Entities;

@@ -1,13 +1,14 @@
-﻿namespace brief.Library.Repositories
+﻿namespace briefCore.Library.Repositories
 {
     using System;
     using System.Threading.Tasks;
-    using briefCore.Library.Entities;
     using Entities;
 
     public interface IEditionFileRepository
     {
-        Task<Guid> AddFile(EditionFile file);
-        Task<EditionFile> GetFile();
+        Task<EditionFile> GetEditionFile(Guid id);
+        Task<Guid> CreateEditionFile(EditionFile editionFile);
+        Task<Guid> UpdateEditionFile(EditionFile editionFile);
+        Task RemoveEditionFile(EditionFile editionFile);
     }
 }

@@ -58,6 +58,24 @@
             return new BaseResponseMessage { RawData = transformResult };
         }
 
+        public async Task<BaseResponseMessage> AddEditionFile(Guid id, string editionPath)
+        {
+            var edition = await _editionRepository.GetEdition(id);
+
+
+            return null;
+        }
+
+        public Task<BaseResponseMessage> UpdateEditionFile(Guid id, string editionPath)
+        {   
+            throw new NotImplementedException();
+        }
+
+        public Task<BaseResponseMessage> RemoveEditionFile(Guid id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<BaseResponseMessage> UpdateEdition(EditionModel edition)
         {
             var newEdition = _mapper.Map<Edition>(edition);

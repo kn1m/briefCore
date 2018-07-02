@@ -13,6 +13,7 @@
     using Controllers.Models.BaseEntities;
     using Controllers.Providers;
     using Entities;
+    using Repositories;
 
     public class SeriesService : BaseFileService, ISeriesService
     {

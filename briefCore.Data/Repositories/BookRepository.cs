@@ -8,6 +8,7 @@
     using BaseRepositories;
     using Contexts.Interfaces;
     using Library.Entities;
+    using Library.Repositories;
     using Microsoft.EntityFrameworkCore;
 
     public class BookRepository : BaseRepository, IBookRepository
