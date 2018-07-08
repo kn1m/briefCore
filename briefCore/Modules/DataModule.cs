@@ -54,9 +54,13 @@
             builder.RegisterType<AuthorRepository>()
                 .As<IAuthorRepository>()
                 .WithParameter(new TypedParameter(typeof(string), briefConnectionString));
-
+            
             builder.RegisterType<FilterRepository>()
                 .As<IFilterRepository>();
+            builder.RegisterType<EditionFileRepository>()
+                .As<IEditionFileRepository>();
+            builder.RegisterType<DeviceRepository>()
+                .As<IDeviceRepository>();
         }
     }
 }

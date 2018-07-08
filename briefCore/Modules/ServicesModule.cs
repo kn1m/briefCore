@@ -35,6 +35,8 @@
                     .ConvertFromString(_configuration["FileProcessing:TargetTransformerFormat"])
             };
 
+            builder.RegisterType<DeviceService>()
+                .As<IDeviceService>();
             builder.RegisterType<SeriesService>()
                 .As<ISeriesService>();
             builder.RegisterType<AuthorService>()

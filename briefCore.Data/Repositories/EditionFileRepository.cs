@@ -5,7 +5,7 @@
     using Library.Entities;
     using Library.Repositories;
 
-    class EditionFileRepository : IEditionFileRepository
+    public class EditionFileRepository : IEditionFileRepository
     {
         public EditionFileRepository()
         {

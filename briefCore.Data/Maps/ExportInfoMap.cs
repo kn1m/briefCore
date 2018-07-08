@@ -1,7 +1,14 @@
 ﻿namespace briefCore.Data.Maps
 {
-    public class ExportInfoMap
+    using Library.Entities;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+    class ExportInfoMap
     {
-        
+        public ExportInfoMap(EntityTypeBuilder<ExportInfo> builder)
+        {
+            builder.ToTable("export_info");
+        }
     }
 }
