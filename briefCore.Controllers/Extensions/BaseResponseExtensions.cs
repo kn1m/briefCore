@@ -1,8 +1,7 @@
-﻿using System.Net;
-using System.Net.Http;
-
-namespace briefCore.Controllers.Extensions
+﻿namespace briefCore.Controllers.Extensions
 {
+    using System.Net;
+    using System.Net.Http;
     using Models.BaseEntities;
 
     public static class BaseResponseExtensions

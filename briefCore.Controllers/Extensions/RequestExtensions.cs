@@ -11,9 +11,7 @@
                                                  string header,
                                                  IHeaderSettings settings)
         {
-            StringValues headerValues;
-
-            if(request.Headers.TryGetValue(header, out headerValues))
+            if(request.Headers.TryGetValue(header, out StringValues headerValues))
             {
                 var headersList = headerValues.ToList();
 
