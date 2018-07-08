@@ -9,6 +9,19 @@
         public DeviceMap(EntityTypeBuilder<Device> builder)
         {
             builder.ToTable("devices");
+            
+            builder.HasKey(d => d.Id);
+
+            builder.Property(d => d.Manufacturer)
+                .HasMaxLength(300)
+                .IsRequired();
+            
+            builder.Property(d => d.Product)
+                .HasMaxLength(100)
+                .IsRequired();
+
+            builder.Property(d => d.Description)
+                .HasMaxLength(300);
         }    
     }
 }

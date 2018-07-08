@@ -4,7 +4,7 @@
 
     public class UserDeviceModel
     {
-        public Guid Id { get; set; }
+        public Guid? Id { get; set; }
         public DeviceModel Device { get; set; }
         public string SerialNumber { get; set; }
         public string Description { get; set; }

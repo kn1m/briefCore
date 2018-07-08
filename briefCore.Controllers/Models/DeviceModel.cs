@@ -4,7 +4,7 @@
 
     public class DeviceModel
     {
-        public Guid Id { get; set; }
+        public Guid? Id { get; set; }
         public string Product { get; set; }
         public string Manufacturer { get; set; }
         public string Description { get; set; }

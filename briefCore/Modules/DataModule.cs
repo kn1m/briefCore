@@ -44,16 +44,21 @@
                 .WithParameter(new NamedParameter("connectionString", briefConnectionString))
                 .InstancePerLifetimeScope()
                 .AsSelf();
-            
+
+            RegisterRepositories(builder, briefConnectionString);
+        }
+
+        private void RegisterRepositories(ContainerBuilder builder, string connectionString)
+        {
             builder.RegisterType<CoverRepository>()
                 .As<ICoverRepository>()
-                .WithParameter(new TypedParameter(typeof(string), briefConnectionString));
+                .WithParameter(new TypedParameter(typeof(string), connectionString));
             builder.RegisterType<SeriesRepository>()
                 .As<ISeriesRepository>()
-                .WithParameter(new TypedParameter(typeof(string), briefConnectionString));
+                .WithParameter(new TypedParameter(typeof(string), connectionString));
             builder.RegisterType<AuthorRepository>()
                 .As<IAuthorRepository>()
-                .WithParameter(new TypedParameter(typeof(string), briefConnectionString));
+                .WithParameter(new TypedParameter(typeof(string), connectionString));
             
             builder.RegisterType<FilterRepository>()
                 .As<IFilterRepository>();
@@ -61,6 +66,8 @@
                 .As<IEditionFileRepository>();
             builder.RegisterType<DeviceRepository>()
                 .As<IDeviceRepository>();
+            builder.RegisterType<UserDeviceRepository>()
+                .As<IUserDeviceRepository>();
         }
     }
 }
