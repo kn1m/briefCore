@@ -1,4 +1,4 @@
-﻿namespace briefCore.Library.Entities
+﻿namespace briefCore.Library.Entities.Enums
 {
     public enum NoteType : byte
     {

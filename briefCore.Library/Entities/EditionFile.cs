@@ -2,6 +2,7 @@
 {
     using System;
     using brief.Library.Entities;
+    using Enums;
 
     public class EditionFile
     {

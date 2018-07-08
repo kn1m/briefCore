@@ -4,6 +4,8 @@
     using AutoMapper;
     using brief.Library.Entities;
     using Controllers.Models;
+    using Controllers.Models.Enums;
+    using Enums;
     using Helpers;
 
     public class EditionProfile : Profile

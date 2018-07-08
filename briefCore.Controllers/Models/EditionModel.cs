@@ -2,6 +2,7 @@
 {
     using System;
     using BaseEntities;
+    using Enums;
 
     public class EditionModel : IRecognizable
     {

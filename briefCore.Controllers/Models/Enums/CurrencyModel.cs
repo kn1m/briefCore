@@ -1,4 +1,4 @@
-﻿namespace briefCore.Controllers.Models
+﻿namespace briefCore.Controllers.Models.Enums
 {
     public enum CurrencyModel : byte
     {

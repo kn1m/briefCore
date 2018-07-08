@@ -6,6 +6,7 @@
     using brief.Library.Repositories;
     using Controllers.Models;
     using Controllers.Models.BaseEntities;
+    using Controllers.Models.Enums;
     using Controllers.Providers;
 
     public class NoteService : INoteService

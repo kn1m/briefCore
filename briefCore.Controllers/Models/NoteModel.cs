@@ -1,6 +1,7 @@
 ﻿namespace briefCore.Controllers.Models
 {
     using System;
+    using Enums;
 
     public class NoteModel
     {

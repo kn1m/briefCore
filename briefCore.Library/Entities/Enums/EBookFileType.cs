@@ -1,4 +1,4 @@
-﻿namespace brief.Library.Entities
+﻿namespace briefCore.Library.Entities.Enums
 {
     public enum EBookFileType : byte
     {

@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
     using Models;
     using Models.BaseEntities;
+    using Models.Enums;
 
     public interface INoteService
     {
