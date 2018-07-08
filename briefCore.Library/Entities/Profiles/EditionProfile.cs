@@ -3,7 +3,6 @@
     using System;
     using AutoMapper;
     using brief.Library.Entities;
-    using brief.Library.Helpers;
     using Controllers.Models;
     using Helpers;
 

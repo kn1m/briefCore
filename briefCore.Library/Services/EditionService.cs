@@ -4,8 +4,6 @@
     using System.IO.Abstractions;
     using System.Threading.Tasks;
     using AutoMapper;
-    using brief.Controllers.Providers;
-    using brief.Library.Helpers;
     using brief.Library.Repositories;
     using brief.Library.Transformers;
     using BaseServices;
@@ -15,17 +13,20 @@
     using Controllers.Providers;
     using Entities;
     using Helpers;
+    using Repositories;
 
     public class EditionService : BaseTransformService, IEditionService
     {
         public StorageSettings StorageSettings { get; }
 
         private readonly IEditionRepository _editionRepository;
+        private readonly IEditionFileRepository _editionFileRepository;
         private readonly ICoverRepository _coverRepository;
         private readonly ITransformer<string, string> _transformer;
         private readonly IMapper _mapper;
 
         public EditionService(IEditionRepository editionRepository,
+                              IEditionFileRepository editionFileRepository,
                               ICoverRepository coverRepository,
                               ITransformer<string, string> transformer,
                               IFileSystem fileSystem,
@@ -34,6 +35,7 @@
                               StorageSettings storageSettings) : base(settings, fileSystem)
         {
             Guard.AssertNotNull(editionRepository, nameof(editionRepository));
+            Guard.AssertNotNull(editionFileRepository, nameof(editionFileRepository));
             Guard.AssertNotNull(coverRepository, nameof(coverRepository));
             Guard.AssertNotNull(transformer, nameof(transformer));
             Guard.AssertNotNull(mapper, nameof(mapper));
@@ -43,6 +45,7 @@
 
             _coverRepository = coverRepository;
             _editionRepository = editionRepository;
+            _editionFileRepository = editionFileRepository;
             _transformer = transformer;
             _mapper = mapper;
         }

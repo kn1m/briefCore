@@ -7,8 +7,8 @@
     using briefCore.Controllers.Models;
     using briefCore.Controllers.Models.RetrieveModels;
     using briefCore.Controllers.Providers;
+    using briefCore.Library.Helpers;
     using Controllers.Providers;
-    using Helpers;
     using Repositories;
 
     public class FilterService : IFilterService

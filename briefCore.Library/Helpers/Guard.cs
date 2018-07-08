@@ -1,4 +1,4 @@
-﻿namespace brief.Library.Helpers
+﻿namespace briefCore.Library.Helpers
 {
     using System;
 

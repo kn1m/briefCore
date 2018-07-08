@@ -1,10 +1,10 @@
-﻿namespace brief.Data.Repositories
+﻿namespace briefCore.Data.Repositories
 {
     using System;
     using System.Collections.Generic;
-    using briefCore.Library.Entities;
+    using brief.Data;
+    using brief.Library.Repositories;
     using Library.Entities;
-    using Library.Repositories;
 
     public class NoteRepository : BaseDapperRepository, INoteRepository
     {

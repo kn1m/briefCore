@@ -6,13 +6,13 @@
     using System.Threading.Tasks;
     using AutoMapper;
     using brief.Controllers.Providers;
-    using brief.Library.Helpers;
     using brief.Library.Repositories;
     using brief.Library.Services.BaseServices;
     using Controllers.Models;
     using Controllers.Models.BaseEntities;
     using Controllers.Providers;
     using Entities;
+    using Helpers;
     using Repositories;
 
     public class SeriesService : BaseFileService, ISeriesService

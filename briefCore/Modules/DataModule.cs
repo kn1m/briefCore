@@ -3,7 +3,6 @@
     using System;
     using Autofac;
     using Autofac.Core;
-    using brief.Data.Repositories;
     using brief.Library.Repositories;
     using brief.Library.Transformers;
     using Data.Contexts;
@@ -11,6 +10,7 @@
     using Data.Repositories;
     using Data.Transformers;
     using Library.Helpers;
+    using Library.Repositories;
     using Microsoft.Extensions.Configuration;
     using Tesseract;
 
