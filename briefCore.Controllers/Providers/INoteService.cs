@@ -13,7 +13,7 @@
         Task<BaseResponseMessage> UpdateNote(NoteModel note);
         Task<BaseResponseMessage> RemoveNote(Guid id);
         
-        Task<BaseResponseMessage> ExportNotes(IList<NoteModel> notes, NoteTypeModel noteType);
+        Task<BaseResponseMessage> ImportNotes(IList<NoteModel> notes, NoteTypeModel noteType);
         Task<BaseResponseMessage> SaveNotesFile(string notesFilePath, NoteTypeModel noteType);
     }
 }

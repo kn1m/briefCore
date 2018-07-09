@@ -1,12 +1,16 @@
-﻿namespace brief.Library.Repositories
+﻿namespace briefCore.Library.Repositories
 {
     using System;
     using System.Collections.Generic;
-    using briefCore.Library.Entities;
+    using System.Threading.Tasks;
     using Entities;
 
     public interface INoteRepository
     {
-        List<Guid> AddMultipleNotes(IList<Note> notes);
+        Task<Guid> CreateNote(Note note);
+        Task<Guid> UpdateNote(Note note);
+        Task RemoveNote(Guid id);
+        
+        Task<List<Guid>> CreateMultipleNotes(IList<Note> notes);
     }
 }

@@ -8,6 +8,7 @@
     using Controllers.Models.BaseEntities;
     using Controllers.Models.Enums;
     using Controllers.Providers;
+    using Repositories;
 
     public class NoteService : INoteService
     {
@@ -31,7 +32,7 @@
             throw new NotImplementedException();
         }
 
-        public Task<BaseResponseMessage> ExportNotes(IList<NoteModel> notes, NoteTypeModel noteType)
+        public Task<BaseResponseMessage> ImportNotes(IList<NoteModel> notes, NoteTypeModel noteType)
         {
             throw new NotImplementedException();
         }
