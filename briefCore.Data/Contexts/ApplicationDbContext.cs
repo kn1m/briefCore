@@ -34,6 +34,9 @@
             new BookInSeriesMap(modelBuilder.Entity<BookInSeries>());
             new BookByAuthorMap(modelBuilder.Entity<BookByAuthor>());
             new PublisherMap(modelBuilder.Entity<Publisher>());
+            new DeviceMap(modelBuilder.Entity<Device>());
+            new UserDeviceMap(modelBuilder.Entity<UserDevice>());
+            new ImportInfoMap(modelBuilder.Entity<ImportInfo>());
                 
             base.OnModelCreating(modelBuilder);
         }

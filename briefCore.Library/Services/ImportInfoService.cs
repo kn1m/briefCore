@@ -1,10 +1,18 @@
 ﻿namespace briefCore.Library.Services
 {
-    public class ImportInfoService
+    using Controllers.Providers;
+    using Helpers;
+    using UnitOfWork;
+
+    public class ImportInfoService : IInformInfoService
     {
-        public ImportInfoService()
+        private readonly IUnitOfWork _unitOfWork;
+        
+        public ImportInfoService(IUnitOfWork unitOfWork)
         {
-            
+            Guard.AssertNotNull(unitOfWork, nameof(unitOfWork));
+
+            _unitOfWork = unitOfWork;
         }    
     }
 }

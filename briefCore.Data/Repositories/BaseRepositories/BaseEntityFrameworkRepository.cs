@@ -8,11 +8,11 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.ChangeTracking;
 
-    public class BaseRepository
+    public class BaseEntityFrameworkRepository
     {
         protected readonly IApplicationDbContext Context;
 
-        protected BaseRepository(IApplicationDbContext appContext)
+        protected BaseEntityFrameworkRepository(IApplicationDbContext appContext)
         {
             Guard.AssertNotNull(appContext, nameof(appContext));
 
@@ -37,7 +37,7 @@
         protected void RemoveRange<TEntity>(IEnumerable<TEntity> entities) where TEntity : class
             => Context.Set<TEntity>().RemoveRange(entities);
 
-        public Task Commit()
+        protected Task Commit()
             => Context.Commit();
     }
 }

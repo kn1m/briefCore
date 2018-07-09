@@ -11,9 +11,9 @@
     using Library.Entities;
     using Microsoft.EntityFrameworkCore;
 
-    public class EditionRepository : BaseRepository, IEditionRepository
+    public class EditionEntityFrameworkRepository : BaseEntityFrameworkRepository, IEditionRepository
     {
-        public EditionRepository(IApplicationDbContext context) : base(context) {}
+        public EditionEntityFrameworkRepository(IApplicationDbContext context) : base(context) {}
 
         public Task<bool> CheckEditionForUniqueness(Edition edition)
             => Context.Set<Edition>().AnyAsync(e => e.Isbn13 == edition.Isbn13);

@@ -4,13 +4,15 @@
     using Autofac;
     using Autofac.Core;
     using brief.Library.Repositories;
-    using brief.Library.Transformers;
     using Data.Contexts;
     using Data.Contexts.Interfaces;
     using Data.Repositories;
     using Data.Transformers;
+    using Data.UnitOfWork;
     using Library.Helpers;
     using Library.Repositories;
+    using Library.Transformers;
+    using Library.UnitOfWork;
     using Microsoft.Extensions.Configuration;
     using Tesseract;
 
@@ -46,6 +48,7 @@
                 .AsSelf();
 
             RegisterRepositories(builder, briefConnectionString);
+            RegisterUnits(builder);
         }
 
         private void RegisterRepositories(ContainerBuilder builder, string connectionString)
@@ -60,7 +63,7 @@
                 .As<IAuthorRepository>()
                 .WithParameter(new TypedParameter(typeof(string), connectionString));
             
-            builder.RegisterType<FilterRepository>()
+            builder.RegisterType<FilterEntityFrameworkRepository>()
                 .As<IFilterRepository>();
             builder.RegisterType<EditionFileRepository>()
                 .As<IEditionFileRepository>();
@@ -68,6 +71,12 @@
                 .As<IDeviceRepository>();
             builder.RegisterType<UserDeviceRepository>()
                 .As<IUserDeviceRepository>();
+        }
+
+        private void RegisterUnits(ContainerBuilder builder)
+        {
+            builder.RegisterType<UnitOfWork>()
+                .As<IUnitOfWork>();
         }
     }
 }

@@ -4,8 +4,6 @@
     using System.IO.Abstractions;
     using System.Threading.Tasks;
     using AutoMapper;
-    using brief.Library.Repositories;
-    using brief.Library.Transformers;
     using BaseServices;
     using Controllers.Helpers;
     using Controllers.Models;
@@ -13,44 +11,38 @@
     using Controllers.Providers;
     using Entities;
     using Helpers;
-    using Repositories;
+    using JetBrains.Annotations;
+    using Transformers;
+    using UnitOfWork;
 
     public class EditionService : BaseTransformService, IEditionService
     {
         public StorageSettings StorageSettings { get; }
 
-        private readonly IEditionRepository _editionRepository;
-        private readonly IEditionFileRepository _editionFileRepository;
-        private readonly ICoverRepository _coverRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly ITransformer<string, string> _transformer;
         private readonly IMapper _mapper;
 
-        public EditionService(IEditionRepository editionRepository,
-                              IEditionFileRepository editionFileRepository,
-                              ICoverRepository coverRepository,
-                              ITransformer<string, string> transformer,
-                              IFileSystem fileSystem,
-                              IMapper mapper,
-                              BaseTransformerSettings settings,
-                              StorageSettings storageSettings) : base(settings, fileSystem)
+        public EditionService([NotNull]IUnitOfWork unitOfWork,
+                              [NotNull]ITransformer<string, string> transformer,
+                              [NotNull]IFileSystem fileSystem,
+                              [NotNull]IMapper mapper,
+                              [NotNull]BaseTransformerSettings settings,
+                              [NotNull]StorageSettings storageSettings) : base(settings, fileSystem)
         {
-            Guard.AssertNotNull(editionRepository, nameof(editionRepository));
-            Guard.AssertNotNull(editionFileRepository, nameof(editionFileRepository));
-            Guard.AssertNotNull(coverRepository, nameof(coverRepository));
+            Guard.AssertNotNull(unitOfWork, nameof(unitOfWork));
             Guard.AssertNotNull(transformer, nameof(transformer));
             Guard.AssertNotNull(mapper, nameof(mapper));
             Guard.AssertNotNull(storageSettings, nameof(storageSettings));
 
             StorageSettings = storageSettings;
 
-            _coverRepository = coverRepository;
-            _editionRepository = editionRepository;
-            _editionFileRepository = editionFileRepository;
+            _unitOfWork = unitOfWork;
             _transformer = transformer;
             _mapper = mapper;
         }
 
-        public async Task<BaseResponseMessage> RetrieveEditionDataFromImage(ImageModel image)
+        public async Task<BaseResponseMessage> RetrieveEditionDataFromImage([NotNull]ImageModel image)
         {
             var imagePath = ConvertToAppropirateFormat(image.Path, deleteOriginal: true);
 
@@ -61,15 +53,17 @@
             return new BaseResponseMessage { RawData = transformResult };
         }
 
-        public async Task<BaseResponseMessage> AddEditionFile(Guid id, string editionPath)
+        public async Task<BaseResponseMessage> AddEditionFile(Guid id, [NotNull]string editionPath)
         {
-            var edition = await _editionRepository.GetEdition(id);
+            var editionRepository = _unitOfWork.GetEditionRepository();
+            
+            var edition = await editionRepository.GetEdition(id);
 
 
             return null;
         }
 
-        public Task<BaseResponseMessage> UpdateEditionFile(Guid id, string editionPath)
+        public Task<BaseResponseMessage> UpdateEditionFile(Guid id, [NotNull]string editionPath)
         {   
             throw new NotImplementedException();
         }
@@ -79,13 +73,15 @@
             throw new NotImplementedException();
         }
 
-        public async Task<BaseResponseMessage> UpdateEdition(EditionModel edition)
+        public async Task<BaseResponseMessage> UpdateEdition([NotNull]EditionModel edition)
         {
+            var editionRepository = _unitOfWork.GetEditionRepository();
+            
             var newEdition = _mapper.Map<Edition>(edition);
 
             var response = new BaseResponseMessage();
 
-            var editionToUpdate = await _editionRepository.GetEdition(newEdition.Id);
+            var editionToUpdate = await editionRepository.GetEdition(newEdition.Id);
 
             if (editionToUpdate == null)
             {
@@ -99,7 +95,7 @@
                 return response;
             }
 
-            await _editionRepository.UpdateEdition(newEdition);
+            await editionRepository.UpdateEdition(newEdition);
 
             response.Id = newEdition.Id;
             return response;
@@ -107,9 +103,12 @@
 
         public async Task<BaseResponseMessage> RemoveEdition(Guid id)
         {
+            var editionRepository = _unitOfWork.GetEditionRepository();
+            var coverRepository = _unitOfWork.GetCoverRepository();
+            
             var response = new BaseResponseMessage();
 
-            var editionToRemove = await _editionRepository.GetEdition(id);
+            var editionToRemove = await editionRepository.GetEdition(id);
 
             if (editionToRemove == null)
             {
@@ -117,39 +116,41 @@
                 return response;
             }
             
-            var covers = await _coverRepository.GetCoversByEdition(id);
+            var covers = await coverRepository.GetCoversByEdition(id);
 
             if (covers != null)
             {
                 covers.ForEach(c => TryCleanUp(c.LinkTo));
 
-                await _coverRepository.RemoveCovers(covers);
+                await coverRepository.RemoveCovers(covers);
             }
             
-            await _editionRepository.RemoveEdition(editionToRemove);
+            await editionRepository.RemoveEdition(editionToRemove);
             
             response.Id = id;
             return response;
         }
 
-        public Task<BaseResponseMessage> UploadEditionFile(Guid id, string editionPath)
+        public Task<BaseResponseMessage> UploadEditionFile(Guid id, [NotNull]string editionPath)
         {
             throw new NotImplementedException();
         }
 
         public async Task<BaseResponseMessage> CreateEdition(EditionModel edition)
         {
+            var editionRepository = _unitOfWork.GetEditionRepository();
+            
             var newEdtition = _mapper.Map<Edition>(edition);
 
             var response = new BaseResponseMessage();
 
-            if (await _editionRepository.CheckEditionForUniqueness(newEdtition))
+            if (await editionRepository.CheckEditionForUniqueness(newEdtition))
             {
                 response.RawData = $"Edition {newEdtition.Description} already existing with similar data.";
                 return response;
             }
 
-            var createdEditionId = await _editionRepository.CreateEdition(newEdtition);
+            var createdEditionId = await editionRepository.CreateEdition(newEdtition);
 
             response.Id = createdEditionId;
             return response;

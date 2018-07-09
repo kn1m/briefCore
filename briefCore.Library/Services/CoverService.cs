@@ -11,11 +11,11 @@
     using briefCore.Library.Helpers;
     using briefCore.Library.Repositories;
     using briefCore.Library.Services.BaseServices;
+    using briefCore.Library.Transformers;
     using BaseServices;
     using Controllers.Providers;
     using Entities;
     using Repositories;
-    using Transformers;
 
     public class CoverService : BaseTransformService, ICoverService
     {

@@ -9,7 +9,7 @@
     using Library.Entities;
     using Microsoft.EntityFrameworkCore;
 
-    class PublisherRepostitory : BaseRepository, IPublisherRepository
+    class PublisherRepostitory : BaseEntityFrameworkRepository, IPublisherRepository
     {
         public PublisherRepostitory(IApplicationDbContext appContext) : base(appContext) {}
 

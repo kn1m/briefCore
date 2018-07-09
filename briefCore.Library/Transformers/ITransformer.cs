@@ -1,4 +1,4 @@
-﻿namespace brief.Library.Transformers
+﻿namespace briefCore.Library.Transformers
 {
     using System.Threading.Tasks;
 
