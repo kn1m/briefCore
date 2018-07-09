@@ -5,9 +5,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using AutoMapper;
-    using brief.Controllers.Providers;
-    using brief.Library.Repositories;
-    using brief.Library.Services.BaseServices;
+    using BaseServices;
     using Controllers.Models;
     using Controllers.Models.BaseEntities;
     using Controllers.Providers;

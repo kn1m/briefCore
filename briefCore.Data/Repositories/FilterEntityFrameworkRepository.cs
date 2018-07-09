@@ -2,11 +2,10 @@
 {
     using System;
     using System.Linq;
-    using brief.Library.Entities;
-    using brief.Library.Repositories;
     using BaseRepositories;
     using Contexts.Interfaces;
     using Library.Entities;
+    using Library.Repositories;
     using Microsoft.EntityFrameworkCore;
 
     public class FilterEntityFrameworkRepository : BaseEntityFrameworkRepository, IFilterRepository

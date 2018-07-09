@@ -1,8 +1,7 @@
-﻿namespace brief.Library.Repositories
+﻿namespace briefCore.Library.Repositories
 {
     using System;
     using System.Linq;
-    using briefCore.Library.Entities;
     using Entities;
 
     public interface IFilterRepository

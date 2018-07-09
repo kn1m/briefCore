@@ -3,7 +3,6 @@
     using System;
     using System.Linq;
     using System.Threading.Tasks;
-    using brief.Library.Repositories;
     using BaseRepositories;
     using Dapper;
     using Library.Entities;

@@ -1,2 +1,2 @@
-# briefCore
+# briefCore root
 

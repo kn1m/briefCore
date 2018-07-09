@@ -1,9 +1,8 @@
-﻿namespace brief.Library.Repositories
+﻿namespace briefCore.Library.Repositories
 {
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using briefCore.Library.Entities;
     using Entities;
 
     public interface IEditionRepository

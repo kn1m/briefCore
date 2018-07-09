@@ -3,7 +3,6 @@
     using System;
     using System.Drawing;
     using System.IO.Abstractions;
-    using brief.Library.Services.BaseServices;
     using Helpers;
     using System.Drawing.Imaging;
 

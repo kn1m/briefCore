@@ -1,4 +1,4 @@
-﻿namespace brief.Library.Entities
+﻿namespace briefCore.Library.Entities
 {
     public enum Language : byte
     {

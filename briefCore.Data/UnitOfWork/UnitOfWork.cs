@@ -1,6 +1,5 @@
 ﻿namespace briefCore.Data.UnitOfWork
 {
-    using brief.Library.Repositories;
     using JetBrains.Annotations;
     using Library.Helpers;
     using Library.Repositories;
@@ -18,11 +17,35 @@
         private readonly IDeviceRepository _deviceRepository;
         private readonly IUserDeviceRepository _userDeviceRepository;
         
-        public UnitOfWork([NotNull]IBookRepository bookRepository)
+        public UnitOfWork([NotNull]IBookRepository bookRepository,
+                          [NotNull]ISeriesRepository seriesRepository,
+                          [NotNull]IAuthorRepository authorRepository,
+                          [NotNull]ICoverRepository coverRepository,
+                          [NotNull]IEditionFileRepository editionFileRepository,
+                          [NotNull]IEditionRepository editionRepository,
+                          [NotNull]IPublisherRepository publisherRepository,
+                          [NotNull]IDeviceRepository deviceRepository,
+                          [NotNull]IUserDeviceRepository userDeviceRepository)
         {
             Guard.AssertNotNull(bookRepository, nameof(bookRepository));
-
+            Guard.AssertNotNull(seriesRepository, nameof(seriesRepository));
+            Guard.AssertNotNull(authorRepository, nameof(authorRepository));
+            Guard.AssertNotNull(coverRepository, nameof(coverRepository));
+            Guard.AssertNotNull(editionFileRepository, nameof(editionFileRepository));
+            Guard.AssertNotNull(editionRepository, nameof(editionRepository));
+            Guard.AssertNotNull(publisherRepository, nameof(publisherRepository));
+            Guard.AssertNotNull(deviceRepository, nameof(deviceRepository));
+            Guard.AssertNotNull(userDeviceRepository, nameof(userDeviceRepository));
+            
             _bookRepository = bookRepository;
+            _seriesRepository = seriesRepository;
+            _authorRepository = authorRepository;
+            _coverRepository = coverRepository;
+            _editionFileRepository = editionFileRepository;
+            _editionRepository = editionRepository;
+            _publisherRepository = publisherRepository;
+            _deviceRepository = deviceRepository;
+            _userDeviceRepository = userDeviceRepository;
         }
 
         public IBookRepository GetBookRepository()

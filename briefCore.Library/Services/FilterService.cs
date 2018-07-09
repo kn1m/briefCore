@@ -1,14 +1,13 @@
-﻿namespace brief.Library.Services
+﻿namespace briefCore.Library.Services
 {
     using System;
     using System.Linq;
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
-    using briefCore.Controllers.Models;
-    using briefCore.Controllers.Models.RetrieveModels;
-    using briefCore.Controllers.Providers;
-    using briefCore.Library.Helpers;
+    using Controllers.Models;
+    using Controllers.Models.RetrieveModels;
     using Controllers.Providers;
+    using Helpers;
     using Repositories;
 
     public class FilterService : IFilterService

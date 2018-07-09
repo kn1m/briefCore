@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using brief.Library.Entities;
     using Enums;
 
     public class Edition

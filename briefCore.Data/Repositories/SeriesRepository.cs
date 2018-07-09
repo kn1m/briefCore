@@ -3,11 +3,10 @@
     using System;
     using System.Linq;
     using System.Threading.Tasks;
-    using brief.Library.Entities;
-    using brief.Library.Repositories;
     using BaseRepositories;
     using Dapper;
     using Library.Entities;
+    using Library.Repositories;
 
     public class SeriesRepository : BaseDapperRepository, ISeriesRepository
     {

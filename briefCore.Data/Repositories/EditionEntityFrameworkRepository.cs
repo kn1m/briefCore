@@ -4,11 +4,10 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using brief.Library.Entities;
-    using brief.Library.Repositories;
     using BaseRepositories;
     using Contexts.Interfaces;
     using Library.Entities;
+    using Library.Repositories;
     using Microsoft.EntityFrameworkCore;
 
     public class EditionEntityFrameworkRepository : BaseEntityFrameworkRepository, IEditionRepository

@@ -1,18 +1,15 @@
-﻿namespace brief.Library.Services
+﻿namespace briefCore.Library.Services
 {
     using System;
     using System.IO.Abstractions;
     using System.Threading.Tasks;
     using AutoMapper;
-    using briefCore.Controllers.Models;
-    using briefCore.Controllers.Models.BaseEntities;
-    using briefCore.Controllers.Providers;
-    using briefCore.Library.Entities;
-    using briefCore.Library.Helpers;
-    using briefCore.Library.Repositories;
     using BaseServices;
+    using Controllers.Models;
+    using Controllers.Models.BaseEntities;
     using Controllers.Providers;
     using Entities;
+    using Helpers;
     using Repositories;
 
     public class PublisherService : BaseFileService, IPublisherService

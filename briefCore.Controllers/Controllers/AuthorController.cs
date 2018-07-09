@@ -4,7 +4,6 @@
     using System.Net;
     using System.Net.Http;
     using System.Threading.Tasks;
-    using brief.Controllers.Providers;
     using Extensions;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;

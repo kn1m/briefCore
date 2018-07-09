@@ -1,4 +1,4 @@
-﻿namespace brief.Library.Services.BaseServices
+﻿namespace briefCore.Library.Services.BaseServices
 {
     using System;
     using System.IO.Abstractions;

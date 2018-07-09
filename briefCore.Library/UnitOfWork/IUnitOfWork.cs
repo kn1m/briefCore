@@ -1,6 +1,5 @@
 ﻿namespace briefCore.Library.UnitOfWork
 {
-    using brief.Library.Repositories;
     using Repositories;
 
     public interface IUnitOfWork

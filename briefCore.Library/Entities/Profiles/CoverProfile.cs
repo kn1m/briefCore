@@ -2,7 +2,6 @@
 {
     using System;
     using AutoMapper;
-    using brief.Library.Entities;
     using Controllers.Models;
 
     public class CoverProfile : Profile

@@ -6,7 +6,6 @@
     using System.Net;
     using System.Net.Http;
     using System.Threading.Tasks;
-    using brief.Controllers.Providers;
     using BaseControllers;
     using Extensions;
     using Helpers.Base;

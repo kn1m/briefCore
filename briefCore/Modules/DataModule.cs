@@ -3,7 +3,6 @@
     using System;
     using Autofac;
     using Autofac.Core;
-    using brief.Library.Repositories;
     using Data.Contexts;
     using Data.Contexts.Interfaces;
     using Data.Repositories;

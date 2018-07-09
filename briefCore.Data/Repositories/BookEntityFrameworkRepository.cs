@@ -3,8 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using brief.Library.Entities;
-    using brief.Library.Repositories;
     using BaseRepositories;
     using Contexts.Interfaces;
     using Library.Entities;

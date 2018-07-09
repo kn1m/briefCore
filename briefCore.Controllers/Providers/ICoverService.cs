@@ -1,10 +1,9 @@
-﻿namespace brief.Controllers.Providers
+﻿namespace briefCore.Controllers.Providers
 {
     using System;
     using System.Threading.Tasks;
-    using briefCore.Controllers.Models;
-    using briefCore.Controllers.Models.BaseEntities;
-    using briefCore.Controllers.Providers;
+    using Models;
+    using Models.BaseEntities;
 
     public interface ICoverService : IImageService
     {

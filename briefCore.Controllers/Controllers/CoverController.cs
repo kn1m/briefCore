@@ -6,13 +6,13 @@
     using System.Net;
     using System.Net.Http;
     using System.Threading.Tasks;
-    using brief.Controllers.Providers;
     using BaseControllers;
     using Extensions;
     using Helpers.Base;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Providers;
 
     [Authorize]
     [Route("api/[controller]/[action]")]

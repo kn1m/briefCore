@@ -1,7 +1,6 @@
 ﻿namespace briefCore.Library.Entities
 {
     using System;
-    using brief.Library.Entities;
 
     public class BookByAuthor
     {
