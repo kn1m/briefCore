@@ -3,8 +3,8 @@
     using System;
     using System.Linq;
     using System.Threading.Tasks;
-    using brief.Data;
     using brief.Library.Repositories;
+    using BaseRepositories;
     using Dapper;
     using Library.Entities;
     using Library.Repositories;

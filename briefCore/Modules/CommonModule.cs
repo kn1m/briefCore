@@ -22,10 +22,18 @@
             builder.RegisterType<FileSystem>()
                 .As<IFileSystem>();
             
+            RegisterControllerDependencies(builder);
+        }
+
+        private void RegisterControllerDependencies(ContainerBuilder builder)
+        {
             var recognitionLanguagesSettings = new HeaderSettings
             {
                 AcceptableValuesForHeader =
-                    new Dictionary<string, string[]> {{ "Target-Language", new[] {"ukr", "rus", "eng"} }}
+                    new Dictionary<string, string[]>
+                    {
+                        { "Target-Language", new[] { "ukr", "rus", "eng"} }
+                    }
             };
             
             builder.Register(h => recognitionLanguagesSettings)

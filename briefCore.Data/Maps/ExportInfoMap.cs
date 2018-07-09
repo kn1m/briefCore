@@ -9,6 +9,10 @@
         public ExportInfoMap(EntityTypeBuilder<ExportInfo> builder)
         {
             builder.ToTable("export_info");
+            
+            builder.HasKey(ei => ei.Id);
+
+            builder.Property(ei => ei.Exported);
         }
     }
 }

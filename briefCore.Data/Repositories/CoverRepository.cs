@@ -6,13 +6,13 @@
     using System.Data.SqlClient;
     using System.Linq;
     using System.Threading.Tasks;
-    using brief.Data;
     using brief.Library.Repositories;
+    using BaseRepositories;
     using Dapper;
     using Library.Entities;
     using Library.Repositories;
 
-    public class CoverRepository : BaseDapperRepository,  ICoverRepository
+    public class CoverRepository : BaseDapperRepository, ICoverRepository
     {
         public CoverRepository(string connectionString) : base(connectionString) {}
 

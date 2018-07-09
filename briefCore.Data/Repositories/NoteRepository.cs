@@ -2,8 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
-    using brief.Data;
     using brief.Library.Repositories;
+    using BaseRepositories;
     using Library.Entities;
 
     public class NoteRepository : BaseDapperRepository, INoteRepository

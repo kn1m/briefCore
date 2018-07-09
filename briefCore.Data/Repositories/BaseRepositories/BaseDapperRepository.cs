@@ -1,9 +1,9 @@
-﻿namespace brief.Data
+﻿namespace briefCore.Data.Repositories.BaseRepositories
 {
     using System;
     using System.Data;
     using System.Data.SqlClient;
-    using briefCore.Library.Helpers;
+    using Library.Helpers;
 
     public class BaseDapperRepository
     {
