@@ -5,6 +5,8 @@
     public class NotesFile
     {
         public Guid Id { get; set; }
+        public Guid ExportInfoId { get; set; }
+        public ImportInfo ImportInfo { get; set; }
         public string Checksum { get; set; }
         public string Path { get; set; }
     }

@@ -31,15 +31,13 @@
 
         private Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
-            var code = HttpStatusCode.InternalServerError;
-            
             //TODO: handle exceptions of specific types
-            
             _logger.Error(exception.Message + Environment.NewLine + exception.StackTrace);
             
             var result = JsonConvert.SerializeObject(new { error = exception.Message });
             context.Response.ContentType = "application/json";
-            context.Response.StatusCode = (int)code;
+            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+            
             return context.Response.WriteAsync(result);
         }
     }
