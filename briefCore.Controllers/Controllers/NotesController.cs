@@ -1,5 +1,6 @@
 ﻿namespace briefCore.Controllers.Controllers
 {
+    using System;
     using System.Collections.Generic;
     using System.IO.Abstractions;
     using System.Net.Http;
@@ -7,16 +8,20 @@
     using BaseControllers;
     using Microsoft.AspNetCore.Authorization;
     using Models;
+    using Providers;
 
     [Authorize]
     public class NotesController : BaseFileUploadController
     {
-        public NotesController(IFileSystem fileSystem) : base(fileSystem)
+        private readonly INoteService _noteService;
+        
+        public NotesController(INoteService noteService, 
+                               IFileSystem fileSystem) : base(fileSystem)
         {
-            
+            _noteService = noteService ?? throw new ArgumentNullException(nameof(noteService));
         }
 
-        public Task<HttpResponseMessage> ExportNotes(List<NoteModel> notes)
+        public Task<HttpResponseMessage> ImportNotes(List<NoteModel> notes)
         {
             return null;
         }

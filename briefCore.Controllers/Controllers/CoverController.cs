@@ -21,7 +21,9 @@
         private readonly ICoverService _coverService;
         private readonly IHeaderSettings _headerSettings;
 
-        public CoverController(ICoverService coverService, IFileSystem fileSystem, IHeaderSettings headerSettings) : base(fileSystem)
+        public CoverController(ICoverService coverService,
+                               IFileSystem fileSystem,
+                               IHeaderSettings headerSettings) : base(fileSystem)
         {
             _coverService = coverService ?? throw new ArgumentNullException(nameof(coverService));
             _headerSettings = headerSettings ?? throw new ArgumentException(nameof(headerSettings));

@@ -10,6 +10,7 @@
     using Controllers.Providers;
     using Entities;
     using Helpers;
+    using JetBrains.Annotations;
     using UnitOfWork;
 
     public class BookService : BaseFileService, IBookService
@@ -17,9 +18,9 @@
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
         
-        public BookService(IUnitOfWork unitOfWork,
-                           IFileSystem fileSystem,
-                           IMapper mapper) : base(fileSystem)
+        public BookService([NotNull]IUnitOfWork unitOfWork,
+                           [NotNull]IFileSystem fileSystem,
+                           [NotNull]IMapper mapper) : base(fileSystem)
         {
             Guard.AssertNotNull(unitOfWork, nameof(unitOfWork));
             Guard.AssertNotNull(mapper, nameof(mapper));
@@ -60,7 +61,7 @@
             return response;
         }
 
-        public async Task<BaseResponseMessage> CreateBook(BookModel book, bool force = false)
+        public async Task<BaseResponseMessage> CreateBook([NotNull]BookModel book, bool force = false)
         {
             var bookRepository = _unitOfWork.GetBookRepository();
             
@@ -80,7 +81,7 @@
             return response;
         }
 
-        public async Task<BaseResponseMessage> UpdateBook(BookModel book)
+        public async Task<BaseResponseMessage> UpdateBook([NotNull]BookModel book)
         {
             var bookRepository = _unitOfWork.GetBookRepository();
             
