@@ -61,7 +61,7 @@
             return response;
         }
 
-        public async Task<BaseResponseMessage> CreateBook([NotNull]BookModel book, bool force = false)
+        public async Task<BaseResponseMessage> CreateBook(BookModel book, bool force = false)
         {
             var bookRepository = _unitOfWork.GetBookRepository();
             
@@ -81,7 +81,7 @@
             return response;
         }
 
-        public async Task<BaseResponseMessage> UpdateBook([NotNull]BookModel book)
+        public async Task<BaseResponseMessage> UpdateBook(BookModel book)
         {
             var bookRepository = _unitOfWork.GetBookRepository();
             

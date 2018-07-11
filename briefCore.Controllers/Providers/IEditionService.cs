@@ -2,13 +2,14 @@
 {
     using System;
     using System.Threading.Tasks;
+    using JetBrains.Annotations;
     using Models;
     using Models.BaseEntities;
 
     public interface IEditionService : IImageService
     {
-        Task<BaseResponseMessage> CreateEdition(EditionModel edition);
-        Task<BaseResponseMessage> UpdateEdition(EditionModel edition);
+        Task<BaseResponseMessage> CreateEdition([NotNull]EditionModel edition);
+        Task<BaseResponseMessage> UpdateEdition([NotNull]EditionModel edition);
         Task<BaseResponseMessage> RemoveEdition(Guid id);
 
         Task<BaseResponseMessage> RetrieveEditionDataFromImage(ImageModel image);

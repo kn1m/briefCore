@@ -29,7 +29,7 @@
             _mapper = mapper;
         }
 
-        public async Task<BaseResponseMessage> CreateAuthor([NotNull]AuthorModel author)
+        public async Task<BaseResponseMessage> CreateAuthor(AuthorModel author)
         {
             var authorRepository = _unitOfWork.GetAuthorRepository();
             
@@ -50,7 +50,7 @@
             return response;
         }
 
-        public async Task<BaseResponseMessage> UpdateAuthor([NotNull]AuthorModel author)
+        public async Task<BaseResponseMessage> UpdateAuthor(AuthorModel author)
         {
             var authorRepository = _unitOfWork.GetAuthorRepository();
             

@@ -4,7 +4,7 @@
     using Helpers;
     using UnitOfWork;
 
-    public class ImportInfoService : IInformInfoService
+    public class ImportInfoService : IImportInfoService
     {
         private readonly IUnitOfWork _unitOfWork;
         

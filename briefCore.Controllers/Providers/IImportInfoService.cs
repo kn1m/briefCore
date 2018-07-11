@@ -1,6 +1,6 @@
 ﻿namespace briefCore.Controllers.Providers
 {
-    public interface IInformInfoService
+    public interface IImportInfoService
     {
         
     }
