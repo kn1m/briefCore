@@ -38,7 +38,7 @@
                 .As<ISeriesService>();
             builder.RegisterType<AuthorService>()
                 .As<IAuthorService>();
-            builder.RegisterType<BookEntityFrameworkRepository>()
+            builder.RegisterType<BookRepository>()
                 .As<IBookRepository>();
             builder.RegisterType<EditionEntityFrameworkRepository>()
                 .As<IEditionRepository>();

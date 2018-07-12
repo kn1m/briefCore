@@ -28,4 +28,9 @@
       <Name>briefCore.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\run.sh">
+      <Link>run.sh</Link>
+    </Content>
+  </ItemGroup>
 </Project>

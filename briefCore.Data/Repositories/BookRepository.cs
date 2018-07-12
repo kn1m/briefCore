@@ -9,9 +9,9 @@
     using Library.Repositories;
     using Microsoft.EntityFrameworkCore;
 
-    public class BookEntityFrameworkRepository : BaseEntityFrameworkRepository, IBookRepository
+    public class BookRepository : BaseEntityFrameworkRepository, IBookRepository
     {
-        public BookEntityFrameworkRepository(IApplicationDbContext context) : base(context) {}
+        public BookRepository(IApplicationDbContext context) : base(context) {}
 
         public Task<Book> GetBook(Guid id)
             => Context.Set<Book>().FindAsync(id);
