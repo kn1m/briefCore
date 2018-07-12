@@ -6,7 +6,7 @@
     using Autofac;
     using Autofac.Core;
     using Controllers.Helpers;
-    using Controllers.Providers;
+    using Controllers.Providers.ServiceProviders;
     using Data.Repositories;
     using Library.Helpers;
     using Library.Repositories;

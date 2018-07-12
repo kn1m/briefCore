@@ -7,6 +7,7 @@
     using Models;
     using Models.BaseEntities;
     using Providers;
+    using Providers.ServiceProviders;
 
     [Authorize]
     [Route("api/[controller]/[action]")]

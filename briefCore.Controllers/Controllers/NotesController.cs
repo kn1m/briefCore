@@ -9,6 +9,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Models;
     using Providers;
+    using Providers.ServiceProviders;
 
     [Authorize]
     public class NotesController : BaseFileUploadController

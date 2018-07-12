@@ -6,4 +6,7 @@
     <PackageReference Include="Moq" Version="4.8.3" />
     <PackageReference Include="NUnit" Version="3.10.1" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\briefCore.Library\briefCore.Library.csproj" />
+  </ItemGroup>
 </Project>

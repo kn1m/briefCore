@@ -13,7 +13,7 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Models;
-    using Providers;
+    using Providers.ServiceProviders;
 
     [Authorize]
     [Route("api/[controller]/[action]")]

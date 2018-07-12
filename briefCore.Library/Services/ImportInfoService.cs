@@ -1,6 +1,7 @@
 ﻿namespace briefCore.Library.Services
 {
     using Controllers.Providers;
+    using Controllers.Providers.ServiceProviders;
     using Helpers;
     using UnitOfWork;
 

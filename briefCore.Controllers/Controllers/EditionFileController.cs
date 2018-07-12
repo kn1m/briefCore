@@ -5,6 +5,7 @@
     using BaseControllers;
     using Microsoft.AspNetCore.Authorization;
     using Providers;
+    using Providers.ServiceProviders;
 
     [Authorize]
     public class EditionFileController : BaseFileUploadController

@@ -9,55 +9,56 @@
     using Controllers.Models;
     using Controllers.Models.BaseEntities;
     using Controllers.Providers;
+    using Controllers.Providers.ServiceProviders;
     using Entities;
     using Helpers;
-    using Repositories;
+    using JetBrains.Annotations;
     using Transformers;
+    using UnitOfWork;
 
     public class CoverService : BaseTransformService, ICoverService
     {
         public StorageSettings StorageSettings { get; }
 
-        private readonly ICoverRepository _coverRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly ITransformer<string, string> _transformer;
-        private readonly IEditionRepository _editionRepository;
         private readonly IMapper _mapper;
 
-        public CoverService(ICoverRepository coverRepository,
-                            ITransformer<string, string> transformer,
-                            IEditionRepository editionRepository,
-                            IFileSystem fileSystem,
-                            IMapper mapper,
-                            BaseTransformerSettings settings,
-                            StorageSettings storageSettings) : base(settings, fileSystem)
+        public CoverService([NotNull]IUnitOfWork unitOfWork,
+                            [NotNull]ITransformer<string, string> transformer,
+                            [NotNull]IFileSystem fileSystem,
+                            [NotNull]IMapper mapper,
+                            [NotNull]BaseTransformerSettings settings,
+                            [NotNull]StorageSettings storageSettings) : base(settings, fileSystem)
         {
-            Guard.AssertNotNull(coverRepository, nameof(coverRepository));
-            Guard.AssertNotNull(editionRepository, nameof(editionRepository));
+            Guard.AssertNotNull(unitOfWork, nameof(unitOfWork));
             Guard.AssertNotNull(transformer, nameof(transformer));
             Guard.AssertNotNull(mapper, nameof(mapper));
             Guard.AssertNotNull(storageSettings, nameof(storageSettings));
 
             StorageSettings = storageSettings;
 
-            _coverRepository = coverRepository;
-            _editionRepository = editionRepository;
+            _unitOfWork = unitOfWork;
             _transformer = transformer;
             _mapper = mapper;
         }
 
         public async Task<BaseResponseMessage> SaveCover(ImageModel image)
         {
+            var editionRepository = _unitOfWork.GetEditionRepository();
+            var coverRepository = _unitOfWork.GetCoverRepository();
+            
             var cover = _mapper.Map<Cover>(image);
 
             var response = new BaseResponseMessage();
 
-            if (await _editionRepository.GetEdition(cover.EditionId) == null)
+            if (await editionRepository.GetEdition(cover.EditionId) == null)
             {
                 response.RawData = $"Edition with id {cover.EditionId} couldn't been found.";
                 return response;
             }
 
-            response.Id = await _coverRepository.SaveCover(cover);
+            response.Id = await coverRepository.SaveCover(cover);
             return response;
         }
 
@@ -74,9 +75,11 @@
 
         public async Task<BaseResponseMessage> RemoveCover(Guid id)
         {
+            var coverRepository = _unitOfWork.GetCoverRepository();
+            
             var response = new BaseResponseMessage();
 
-            var coverToRemove = await _coverRepository.GetCover(id);
+            var coverToRemove = await coverRepository.GetCover(id);
 
             if (coverToRemove == null)
             {
@@ -86,7 +89,7 @@
 
             TryCleanUp(coverToRemove.LinkTo);
 
-            await _coverRepository.RemoveCover(coverToRemove);
+            await coverRepository.RemoveCover(coverToRemove);
 
             response.Id = id;
             return response;

@@ -7,6 +7,7 @@
     using Controllers.Models.BaseEntities;
     using Controllers.Models.Enums;
     using Controllers.Providers;
+    using Controllers.Providers.ServiceProviders;
     using Repositories;
 
     public class NoteService : INoteService

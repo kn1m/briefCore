@@ -7,6 +7,7 @@
     using Controllers.Models;
     using Controllers.Models.RetrieveModels;
     using Controllers.Providers;
+    using Controllers.Providers.ServiceProviders;
     using Helpers;
     using Repositories;
 
