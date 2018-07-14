@@ -8,9 +8,9 @@
     using Library.Repositories;
     using Microsoft.EntityFrameworkCore;
 
-    public class FilterEntityFrameworkRepository : BaseEntityFrameworkRepository, IFilterRepository
+    public class FilterRepository : BaseEntityFrameworkRepository, IFilterRepository
     {
-        public FilterEntityFrameworkRepository(IApplicationDbContext appContext) : base(appContext) {}
+        public FilterRepository(IApplicationDbContext appContext) : base(appContext) {}
 
         public IQueryable<Book> GetBooks()
             => Context.Set<Book>();

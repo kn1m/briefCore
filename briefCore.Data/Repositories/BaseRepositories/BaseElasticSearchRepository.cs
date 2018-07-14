@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
     using Elasticsearch.Net;
     using JetBrains.Annotations;
     using Library.Helpers;
@@ -33,6 +34,19 @@
             var node = new Uri(_nodesAddresses.First());
             var settings = new ConnectionSettings(node);
             return new ElasticClient(settings);
+        }
+
+        public async Task<IndexResponse> Index<TEntity>(ElasticClient client, 
+                                                        TEntity entity,
+                                                        string index) where TEntity : class 
+            => await client.IndexAsync(entity, idx => idx.Index(index)) as IndexResponse;
+
+        public async Task<TEntity> GetDocument<TEntity>(ElasticClient client, 
+                                                        Guid id,
+                                                        string index) where TEntity : class 
+        {
+            var response =  await client.GetAsync<TEntity>(id, idx => idx.Index(index));
+            return response.Source;
         }
     }
 }

@@ -40,7 +40,7 @@
                 .As<IAuthorService>();
             builder.RegisterType<BookRepository>()
                 .As<IBookRepository>();
-            builder.RegisterType<EditionEntityFrameworkRepository>()
+            builder.RegisterType<EditionRepository>()
                 .As<IEditionRepository>();
             builder.RegisterType<FilterService>()
                 .As<IFilterService>();

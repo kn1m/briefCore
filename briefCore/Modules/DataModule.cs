@@ -62,7 +62,7 @@
                 .As<IAuthorRepository>()
                 .WithParameter(new TypedParameter(typeof(string), connectionString));
             
-            builder.RegisterType<FilterEntityFrameworkRepository>()
+            builder.RegisterType<FilterRepository>()
                 .As<IFilterRepository>();
             builder.RegisterType<EditionFileRepository>()
                 .As<IEditionFileRepository>();

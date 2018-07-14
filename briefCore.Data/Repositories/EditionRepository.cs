@@ -10,9 +10,9 @@
     using Library.Repositories;
     using Microsoft.EntityFrameworkCore;
 
-    public class EditionEntityFrameworkRepository : BaseEntityFrameworkRepository, IEditionRepository
+    public class EditionRepository : BaseEntityFrameworkRepository, IEditionRepository
     {
-        public EditionEntityFrameworkRepository(IApplicationDbContext context) : base(context) {}
+        public EditionRepository(IApplicationDbContext context) : base(context) {}
 
         public Task<bool> CheckEditionForUniqueness(Edition edition)
             => Context.Set<Edition>().AnyAsync(e => e.Isbn13 == edition.Isbn13);
