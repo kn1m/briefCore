@@ -2,29 +2,35 @@
 {
     using System;
     using System.Threading.Tasks;
+    using BaseRepositories;
+    using Contexts.Interfaces;
     using Library.Entities;
     using Library.Repositories;
     
-    public class DeviceRepository : IDeviceRepository
+    public class DeviceRepository : BaseEntityFrameworkRepository, IDeviceRepository
     {
-        public DeviceRepository()
+        public DeviceRepository(IApplicationDbContext context) : base(context) {}
+
+        public async Task<Guid> CreateDevice(Device device)
         {
-            
+            var newDevice = Add(device);
+            await Commit();
+
+            return newDevice.Entity.Id;
         }
 
-        public Task<Guid> CreateDevice(Device device)
+        public async Task<Guid> UpdateDevice(Device device)
         {
-            throw new NotImplementedException();
+            Update(device);
+            await Commit();
+
+            return device.Id;
         }
 
-        public Task<Guid> UpdateDevice(Device device)
+        public async Task RemoveDevice(Device device)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task RemoveDevice(Device device)
-        {
-            throw new NotImplementedException();
+            Remove(device);
+            await Commit();
         }
     }
 }
