@@ -1,6 +1,10 @@
 ﻿namespace briefCore.Library.Services
 {
+    using System;
+    using System.Threading.Tasks;
     using AutoMapper;
+    using Controllers.Models.BaseEntities;
+    using Controllers.Models.Enums;
     using Controllers.Providers.ServiceProviders;
     using Helpers;
     using UnitOfWork;
@@ -18,6 +22,16 @@
 
             _mapper = mapper;
             _unitOfWork = unitOfWork;
+        }
+
+        public Task<BaseResponseMessage> SetDefaultLanguage(LanguageModel language, Guid userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<BaseResponseMessage> SetDefaultRecognitionLanguage(LanguageModel language, Guid userId)
+        {
+            throw new NotImplementedException();
         }
     }
 }
