@@ -1,4 +1,4 @@
-﻿namespace briefCore.Controllers.Providers
+﻿namespace briefCore.Controllers.Providers.BaseProviders
 {
     using Helpers;
 

@@ -8,7 +8,6 @@
     using BaseControllers;
     using Microsoft.AspNetCore.Authorization;
     using Models;
-    using Providers;
     using Providers.ServiceProviders;
 
     [Authorize]
