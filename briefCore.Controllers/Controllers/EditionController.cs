@@ -56,7 +56,16 @@
             return result.CreateRespose(HttpStatusCode.OK, HttpStatusCode.NoContent);
         }
         
+        [HttpGet("{id}")]
+        public HttpResponseMessage GetEditionFile(Guid id)
+        {
+            return null;
+        }
         
-        //TODO: move edition file controller logic here
+        [HttpDelete("{id}")]
+        public HttpResponseMessage RemoveEditionFile(Guid id)
+        {
+            return null;
+        }
     }
 }
