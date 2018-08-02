@@ -39,11 +39,11 @@
             builder.RegisterType<ApplicationDbContext>()
                 .As<IApplicationDbContext>()
                 .WithParameter(new NamedParameter("connectionString", briefConnectionString))
-                .InstancePerLifetimeScope();
+                .InstancePerRequest();
 
             builder.RegisterType<ApplicationDbContext>()
                 .WithParameter(new NamedParameter("connectionString", briefConnectionString))
-                .InstancePerLifetimeScope()
+                .InstancePerRequest()
                 .AsSelf();
 
             RegisterRepositories(builder, briefConnectionString);
@@ -70,6 +70,10 @@
                 .As<IDeviceRepository>();
             builder.RegisterType<UserDeviceRepository>()
                 .As<IUserDeviceRepository>();
+            builder.RegisterType<WhishlistRepository>()
+                .As<IWhishlistRepository>();
+            builder.RegisterType<UnfinishedRepository>()
+                .As<IUnfinishedRepository>();
         }
 
         private void RegisterUnits(ContainerBuilder builder)

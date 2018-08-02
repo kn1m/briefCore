@@ -4,7 +4,7 @@
     using Microsoft.AspNetCore.Mvc;
     
     [Authorize]
-    public class BaseAuthenicatedController : Controller
+    public class BaseAuthorizeController : Controller
     {
         
     }
