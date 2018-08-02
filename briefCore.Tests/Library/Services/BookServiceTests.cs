@@ -16,7 +16,7 @@
             
         }
 
-        public IEnumerable<TestCaseData> GetDataForCreateBook
+        private static IEnumerable<TestCaseData> GetDataForCreateBook
         {
             get
             {
