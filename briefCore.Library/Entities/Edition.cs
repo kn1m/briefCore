@@ -15,10 +15,12 @@
         public virtual Book Book { get; set; }
         public Guid PublisherId { get; set; }
         public virtual Publisher Publisher { get; set; }
-        public virtual IList<Cover> Covers { get; set; }
+        public List<Cover> Covers { get; set; }
         //public virtual IList<Note> Notes { get; set; }
-        public virtual IList<EditionFile> Files { get; set; }
-        public virtual IList<Location> Locations { get; set; }
+        public List<EditionFile> Files { get; set; }
+        public List<Location> Locations { get; set; }
+        public List<EditionInUnfinishedList> EditionInUnfinishedLists { get; set; }
+        public List<EditionInWhishlist> EditionInWhishlists { get; set; }
         public EditionType EditionType { get; set; }
         public Language Language { get; set; }
         public Currency? Currency { get; set; }
@@ -27,8 +29,7 @@
 
         public override bool Equals(object obj)
         {
-            var edition = obj as Edition;
-            if (edition != null)
+            if (obj is Edition edition)
             {
                 return edition.PublisherId != PublisherId ||
                        edition.Description != Description ||

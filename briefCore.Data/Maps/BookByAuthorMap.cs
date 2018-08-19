@@ -10,7 +10,7 @@
         {
             builder.ToTable("books_by_author");
             
-            builder.HasKey(ba => new {ba.AuthorId, ba.BookId});
+            builder.HasKey(ba => new { ba.AuthorId, ba.BookId });
 
             builder.HasOne(ba => ba.Book)
                 .WithMany(b => b.BookByAuthors)

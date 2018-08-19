@@ -11,16 +11,11 @@
         public List<Edition> Editions { get; set; }
         public List<BookInSeries> BookInSerieses { get; set; }
         public List<BookByAuthor> BookByAuthors { get; set; }
+        public List<BookInGenre> BookInGenres { get; set; }
 
         public override bool Equals(object obj)
         {
-            if (obj == null)
-            {
-                return false;
-            }
-
-            var book = obj as Book;
-            if (book != null)
+            if (obj is Book book)
             {
                 return book.Name == Name
                     && book.Description == Description;
