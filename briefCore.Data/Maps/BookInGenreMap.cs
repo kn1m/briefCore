@@ -4,13 +4,11 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    public class WhishlistMap
+    public class BookInGenreMap
     {
-        public WhishlistMap(EntityTypeBuilder<Whishlist> builder)
+        public BookInGenreMap(EntityTypeBuilder<BookInGenre> builder)
         {
-            builder.ToTable("whishlist");
-
-            builder.HasKey(w => w.Id);
+            builder.ToTable("book_in_genre");
         }
     }
 }
