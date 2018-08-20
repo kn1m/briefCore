@@ -37,7 +37,13 @@
             new DeviceMap(modelBuilder.Entity<Device>());
             new UserDeviceMap(modelBuilder.Entity<UserDevice>());
             new ImportInfoMap(modelBuilder.Entity<ImportInfo>());
-                
+            new WhishlistMap(modelBuilder.Entity<Whishlist>());
+            new UnfinishedListMap(modelBuilder.Entity<UnfinishedList>());
+            new GenreMap(modelBuilder.Entity<Genre>());
+            new BookInGenreMap(modelBuilder.Entity<BookInGenre>());
+            new EditionInUnfinishedListMap(modelBuilder.Entity<EditionInUnfinishedList>());
+            new EditionInWhishlistMap(modelBuilder.Entity<EditionInWhishlist>());
+            
             base.OnModelCreating(modelBuilder);
         }
 

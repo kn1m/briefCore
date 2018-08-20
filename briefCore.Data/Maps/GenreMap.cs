@@ -4,7 +4,7 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    public class GenreMap
+    class GenreMap
     {
         public GenreMap(EntityTypeBuilder<Genre> builder)
         {

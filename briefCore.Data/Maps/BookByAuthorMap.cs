@@ -14,11 +14,13 @@
 
             builder.HasOne(ba => ba.Book)
                 .WithMany(b => b.BookByAuthors)
-                .HasForeignKey(ba => ba.BookId);
+                .HasForeignKey(ba => ba.BookId)
+                .OnDelete(DeleteBehavior.Cascade);
             
             builder.HasOne(ba => ba.Author)
                 .WithMany(b => b.BooksByAuthor)
-                .HasForeignKey(ba => ba.AuthorId);
+                .HasForeignKey(ba => ba.AuthorId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

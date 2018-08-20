@@ -4,7 +4,7 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    public class UnfinishedListMap
+    class UnfinishedListMap
     {
         public UnfinishedListMap(EntityTypeBuilder<UnfinishedList> builder)
         {

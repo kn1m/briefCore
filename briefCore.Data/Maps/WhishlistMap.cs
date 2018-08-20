@@ -4,7 +4,7 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    public class WhishlistMap
+    class WhishlistMap
     {
         public WhishlistMap(EntityTypeBuilder<Whishlist> builder)
         {

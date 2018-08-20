@@ -9,6 +9,6 @@
         public string Name { get; set; }
         public string Description { get; set; }
         
-        public List<BookByAuthor> BookByAuthors { get; set; }
+        public List<BookInGenre> BookInGenres { get; set; }
     }
 }

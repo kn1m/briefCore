@@ -4,7 +4,7 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-    public class EditionInUnfinishedListMap
+    class EditionInUnfinishedListMap
     {
         public EditionInUnfinishedListMap(EntityTypeBuilder<EditionInUnfinishedList> builder)
         {
@@ -14,11 +14,13 @@
 
             builder.HasOne(eu => eu.Edition)
                 .WithMany(e => e.EditionInUnfinishedLists)
-                .HasForeignKey(eu => eu.EditionId);
-            
+                .HasForeignKey(eu => eu.EditionId)
+                .OnDelete(DeleteBehavior.Cascade);
+
             builder.HasOne(eu => eu.UnfinishedList)
                 .WithMany(ul => ul.EditionInUnfinishedLists)
-                .HasForeignKey(eu => eu.UnfinishedList);
+                .HasForeignKey(eu => eu.UnfinishedList)
+                .OnDelete(DeleteBehavior.Cascade);
 
             builder.Property(eu => eu.Reason)
                 .HasMaxLength(4000);

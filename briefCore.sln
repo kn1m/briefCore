@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "briefCore.Tests.Integration
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "briefCore.Tesseract", "briefCore.Tesseract\briefCore.Tesseract.csproj", "{602E08B2-22A9-440C-870C-C625121A1C00}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "briefCore.Migrations", "briefCore.Migrations\briefCore.Migrations.csproj", "{7511FFE5-5E44-4C95-B7DF-F14AA836DBF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{602E08B2-22A9-440C-870C-C625121A1C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{602E08B2-22A9-440C-870C-C625121A1C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{602E08B2-22A9-440C-870C-C625121A1C00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7511FFE5-5E44-4C95-B7DF-F14AA836DBF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7511FFE5-5E44-4C95-B7DF-F14AA836DBF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7511FFE5-5E44-4C95-B7DF-F14AA836DBF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7511FFE5-5E44-4C95-B7DF-F14AA836DBF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
