@@ -43,6 +43,7 @@
             new BookInGenreMap(modelBuilder.Entity<BookInGenre>());
             new EditionInUnfinishedListMap(modelBuilder.Entity<EditionInUnfinishedList>());
             new EditionInWhishlistMap(modelBuilder.Entity<EditionInWhishlist>());
+            new NotesFileMap(modelBuilder.Entity<NotesFile>());
             
             base.OnModelCreating(modelBuilder);
         }

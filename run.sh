@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-readonly LOGPATH=~/projects/briefCoreData/briefCoreLogs
+if [ $# -ne 1 ]; then
+    echo $0: usage: log dir path
+    exit 1
+fi
+
+LOGPATH=$1
 
 dotnet restore
 dotnet build
