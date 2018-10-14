@@ -11,6 +11,7 @@
 
     public class BaseElasticSearchRepository
     {
+        private const byte MinimunNodesAmout = 1;
         private readonly IList<string> _nodesAddresses;
         
         public BaseElasticSearchRepository([NotNull]IList<string> nodesAddresses)
@@ -22,12 +23,13 @@
 
         public ElasticClient GetClient()
         {
-            if (_nodesAddresses.Count > 1)
+            if (_nodesAddresses.Count > MinimunNodesAmout)
             {
                 var nodes = _nodesAddresses.Select(n => new Uri(n)).ToArray(); 
                 
                 var pool = new StaticConnectionPool(nodes);
                 var poolSettings = new ConnectionSettings(pool);
+                
                 return new ElasticClient(poolSettings);
             }
             

@@ -8,7 +8,7 @@
         IAuthorRepository GetAuthorRepository();
         ICoverRepository GetCoverRepository();
         IDeviceRepository GetDeviceRepository();
-        IUserDeviceRepository GetIUserDeviceRepository();
+        IUserDeviceRepository GetUserDeviceRepository();
         ISeriesRepository GetSeriesRepository();
         IEditionFileRepository GetEditionFileRepository();
         IEditionRepository GetEditionRepository();

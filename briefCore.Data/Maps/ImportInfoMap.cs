@@ -12,6 +12,9 @@
             
             builder.HasKey(ii => ii.Id);
 
+            builder.Property(ii => ii.Description)
+                .HasMaxLength(4000);
+                
             builder.Property(ii => ii.Imported);
         }
     }

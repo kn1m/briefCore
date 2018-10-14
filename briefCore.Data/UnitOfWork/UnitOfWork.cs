@@ -49,49 +49,31 @@
         }
 
         public IBookRepository GetBookRepository()
-        {
-            throw new System.NotImplementedException();
-        }
+            => _bookRepository;
 
         public IAuthorRepository GetAuthorRepository()
-        {
-            throw new System.NotImplementedException();
-        }
+            => _authorRepository;
 
         public ICoverRepository GetCoverRepository()
-        {
-            throw new System.NotImplementedException();
-        }
+            => _coverRepository;
 
         public IDeviceRepository GetDeviceRepository()
-        {
-            throw new System.NotImplementedException();
-        }
+            => _deviceRepository;
 
-        public IUserDeviceRepository GetIUserDeviceRepository()
-        {
-            throw new System.NotImplementedException();
-        }
+        public IUserDeviceRepository GetUserDeviceRepository()
+            => _userDeviceRepository;
 
         public ISeriesRepository GetSeriesRepository()
-        {
-            throw new System.NotImplementedException();
-        }
+            => _seriesRepository;
 
         public IEditionFileRepository GetEditionFileRepository()
-        {
-            throw new System.NotImplementedException();
-        }
+            => _editionFileRepository;
 
         public IEditionRepository GetEditionRepository()
-        {
-            throw new System.NotImplementedException();
-        }
+            => _editionRepository;
 
         public IPublisherRepository GetPublisherRepository()
-        {
-            throw new System.NotImplementedException();
-        }
+            => _publisherRepository;
 
         public INoteRepository GetNoteRepository()
         {
