@@ -11,6 +11,9 @@
             builder.ToTable("unfinished_list");
 
             builder.HasKey(ul => ul.Id);
+
+            builder.Property(ul => ul.UserId)
+                .IsRequired();
         }
     }
 }

@@ -25,7 +25,9 @@
         {
             if (_nodesAddresses.Count > MinimunNodesAmout)
             {
-                var nodes = _nodesAddresses.Select(n => new Uri(n)).ToArray(); 
+                var nodes = _nodesAddresses
+                    .Select(n => new Uri(n))
+                    .ToArray(); 
                 
                 var pool = new StaticConnectionPool(nodes);
                 var poolSettings = new ConnectionSettings(pool);
@@ -40,7 +42,8 @@
 
         public async Task<IndexResponse> Index<TEntity>(ElasticClient client, 
                                                         TEntity entity,
-                                                        string index) where TEntity : class 
+                                                        string index) where TEntity : class
+        
             => await client.IndexAsync(entity, idx => idx.Index(index)) as IndexResponse;
 
         public async Task<TEntity> GetDocument<TEntity>(ElasticClient client, 
@@ -50,5 +53,12 @@
             var response =  await client.GetAsync<TEntity>(id, idx => idx.Index(index));
             return response.Source;
         }
+
+        public async Task DeleteById<TEntity>(ElasticClient client,
+                                              Guid id,
+                                              IndexName index,
+                                              TypeName type) where TEntity : class
+        
+            => await client.DeleteAsync(new DeleteRequest(index, type, new Id(id)));
     }
 }
