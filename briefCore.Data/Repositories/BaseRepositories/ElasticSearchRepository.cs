@@ -5,16 +5,17 @@
     using System.Linq;
     using System.Threading.Tasks;
     using Elasticsearch.Net;
+    using Interfaces;
     using JetBrains.Annotations;
     using Library.Helpers;
     using Nest;
 
-    public class BaseElasticSearchRepository
+    public class ElasticSearchRepository : IElasticRepository
     {
         private const byte MinimunNodesAmout = 1;
         private readonly IList<string> _nodesAddresses;
         
-        public BaseElasticSearchRepository([NotNull]IList<string> nodesAddresses)
+        public ElasticSearchRepository([NotNull]IList<string> nodesAddresses)
         {
             Guard.AssertNotNull(nodesAddresses, nameof(nodesAddresses));
 

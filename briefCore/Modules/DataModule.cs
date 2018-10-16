@@ -6,6 +6,8 @@
     using Data.Contexts;
     using Data.Contexts.Interfaces;
     using Data.Repositories;
+    using Data.Repositories.BaseRepositories;
+    using Data.Repositories.Interfaces;
     using Data.Transformers;
     using Data.UnitOfWork;
     using Library.Helpers;
@@ -74,6 +76,12 @@
                 .As<IWhishlistRepository>();
             builder.RegisterType<UnfinishedRepository>()
                 .As<IUnfinishedRepository>();
+            builder.RegisterType<ImportInfoRepository>()
+                .As<IImportInfoRepository>();
+            
+            
+            builder.RegisterType<ElasticSearchRepository>()
+                .As<IElasticRepository>();
         }
 
         private void RegisterUnits(ContainerBuilder builder)
