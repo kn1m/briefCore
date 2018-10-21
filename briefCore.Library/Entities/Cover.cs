@@ -1,10 +1,10 @@
 ﻿namespace briefCore.Library.Entities
 {
     using System;
+    using BaseEntities;
 
-    public class Cover
+    public class Cover : BaseEntity
     {
-        public Guid Id { get; set; }
         public string LinkTo { get; set; }
         public Guid EditionId { get; set; }
         public virtual Edition Edition { get; set; }

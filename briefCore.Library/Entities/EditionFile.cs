@@ -1,11 +1,11 @@
 ﻿namespace briefCore.Library.Entities
 {
     using System;
+    using BaseEntities;
     using Enums;
 
-    public class EditionFile
+    public class EditionFile : BaseEntity
     {
-        public Guid Id { get; set; }
         public string Path { get; set; }
         public bool IsReaded { get; set; }
         public EBookFileType Type { get; set; }

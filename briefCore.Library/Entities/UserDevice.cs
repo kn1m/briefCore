@@ -1,10 +1,10 @@
 ﻿namespace briefCore.Library.Entities
 {
     using System;
+    using BaseEntities;
 
-    public class UserDevice
+    public class UserDevice : BaseEntity
     {
-        public Guid Id { get; set; }
         public Guid DeviceId { get; set; }
         public Device Device { get; set; }
         public string SerialNumber { get; set; }

@@ -2,10 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
+    using BaseEntities;
 
-    public class Book
+    public class Book : BaseEntity
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public List<Edition> Editions { get; set; }

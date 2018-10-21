@@ -2,11 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
+    using BaseEntities;
     using Enums;
 
-    public class Edition
+    public class Edition : BaseEntity
     {
-        public Guid Id { get; set; }
         public string Description { get; set; }
         public int? Year { get; set; }
         public int? Amount { get; set; }

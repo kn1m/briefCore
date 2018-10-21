@@ -2,10 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
+    using BaseEntities;
 
-    public class ImportInfo
+    public class ImportInfo : BaseEntity
     {
-        public Guid Id { get; set; }
         public DateTime Imported { get; set; }
         public string Description { get; set; }
         public List<NotesFile> NotesFiles { get; set; }

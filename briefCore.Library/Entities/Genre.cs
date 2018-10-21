@@ -1,11 +1,10 @@
 ﻿namespace briefCore.Library.Entities
 {
-    using System;
     using System.Collections.Generic;
+    using BaseEntities;
 
-    public class Genre
+    public class Genre : BaseEntity
     {
-        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         

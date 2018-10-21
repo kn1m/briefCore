@@ -2,10 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
+    using BaseEntities;
 
-    public class UnfinishedList
+    public class UnfinishedList : BaseEntity
     {
-        public Guid Id { get; set; }
         public Guid UserId { get; set; }
         
         public List<EditionInUnfinishedList> EditionInUnfinishedLists { get; set; }

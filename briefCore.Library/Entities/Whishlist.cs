@@ -2,10 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
+    using BaseEntities;
 
-    public class Whishlist
+    public class Whishlist : BaseEntity
     {
-        public Guid Id { get; set; }
         public Guid UserId { get; set; }
         
         public List<EditionInWhishlist> EditionInWhishlists { get; set; }
