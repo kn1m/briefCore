@@ -64,9 +64,9 @@
                                                                   "AuthorSecondName = @authorSecondName and AuthorLastName = @authorLastName",
                                                                   new
                                                                   {
-                                                                      authorFirstName = author.AuthorFirstName,
-                                                                      authorSecondName = author.AuthorSecondName,
-                                                                      authorLastName = author.AuthorLastName
+                                                                      authorFirstName = author.FirstName,
+                                                                      authorSecondName = author.SecondName,
+                                                                      authorLastName = author.LastName
                                                                   })).Single();
             if (existingCount != 0)
             {
@@ -83,9 +83,9 @@
                                           new
                                           {
                                               id = author.Id,
-                                              authorFirstName = author.AuthorFirstName,
-                                              authorSecondName = author.AuthorSecondName,
-                                              authorLastName = author.AuthorLastName
+                                              authorFirstName = author.FirstName,
+                                              authorSecondName = author.SecondName,
+                                              authorLastName = author.LastName
                                           });
             return author.Id;
         }
@@ -98,9 +98,9 @@
                                           new
                                           {
                                               id = author.Id,
-                                              authorFirstName = author.AuthorFirstName,
-                                              authorSecondName = author.AuthorSecondName,
-                                              authorLastName = author.AuthorLastName
+                                              authorFirstName = author.FirstName,
+                                              authorSecondName = author.SecondName,
+                                              authorLastName = author.LastName
                                           });
 
             return author.Id;

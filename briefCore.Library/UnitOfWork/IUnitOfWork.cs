@@ -14,5 +14,7 @@
         IEditionRepository GetEditionRepository();
         IPublisherRepository GetPublisherRepository();
         INoteRepository GetNoteRepository();
+        ITranslatorRepository GetTranslatorRepository();
+        ICategoryRepository GetCategoryRepository();
     }
 }

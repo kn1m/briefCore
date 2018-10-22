@@ -16,6 +16,8 @@
         private readonly IPublisherRepository _publisherRepository;
         private readonly IDeviceRepository _deviceRepository;
         private readonly IUserDeviceRepository _userDeviceRepository;
+        private readonly ITranslatorRepository _translatorRepository;
+        private readonly ICategoryRepository _categoryRepository;
         
         public UnitOfWork([NotNull]IBookRepository bookRepository,
                           [NotNull]ISeriesRepository seriesRepository,
@@ -76,6 +78,16 @@
             => _publisherRepository;
 
         public INoteRepository GetNoteRepository()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public ITranslatorRepository GetTranslatorRepository()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public ICategoryRepository GetCategoryRepository()
         {
             throw new System.NotImplementedException();
         }

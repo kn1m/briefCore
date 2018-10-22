@@ -12,13 +12,13 @@
 
             builder.HasKey(a => a.Id);
 
-            builder.Property(a => a.AuthorFirstName)
+            builder.Property(a => a.FirstName)
                 .HasMaxLength(100);
 
-            builder.Property(a => a.AuthorSecondName)
+            builder.Property(a => a.SecondName)
                 .HasMaxLength(100);
 
-            builder.Property(a => a.AuthorLastName)
+            builder.Property(a => a.LastName)
                 .HasMaxLength(100)
                 .IsRequired();
         }

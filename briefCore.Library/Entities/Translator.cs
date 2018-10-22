@@ -1,7 +1,10 @@
 ﻿namespace briefCore.Library.Entities
 {
-    public class Translator
+    using System.Collections.Generic;
+    using BaseEntities;
+
+    public class Translator : BasePerson
     {
-        
+        public List<EditionTranslatedBy> EditionTranslatedBy { get; set; }
     }
 }
