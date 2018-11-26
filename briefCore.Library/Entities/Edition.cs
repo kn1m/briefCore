@@ -22,6 +22,7 @@
         public List<EditionInUnfinishedList> EditionInUnfinishedLists { get; set; }
         public List<EditionInWhishlist> EditionInWhishlists { get; set; }
         public List<EditionTranslatedBy> EditionTranslatedBy { get; set; }
+        public List<EditionInCategory> EditionInCategories { get; set; }
         public EditionType EditionType { get; set; }
         public Language Language { get; set; }
         public Currency? Currency { get; set; }

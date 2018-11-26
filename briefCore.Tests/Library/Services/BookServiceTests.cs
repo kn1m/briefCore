@@ -9,6 +9,18 @@
     public class BookServiceTests
     {
         private IUnitOfWork _unitOfWork;
+
+        [SetUp]
+        public void SetUp()
+        {
+            
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            _unitOfWork = null;
+        }
         
         [TestCaseSource(nameof(GetDataForCreateBook))]
         public async Task CreateBook()

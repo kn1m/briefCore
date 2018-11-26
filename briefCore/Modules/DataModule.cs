@@ -79,7 +79,6 @@
             builder.RegisterType<ImportInfoRepository>()
                 .As<IImportInfoRepository>();
             
-            
             builder.RegisterType<ElasticSearchRepository>()
                 .As<IElasticRepository>();
         }
