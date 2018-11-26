@@ -45,6 +45,8 @@
             new EditionInWhishlistMap(modelBuilder.Entity<EditionInWhishlist>());
             new NotesFileMap(modelBuilder.Entity<NotesFile>());
             new EditionTranslatedByMap(modelBuilder.Entity<EditionTranslatedBy>());
+            new EditionInCategoryMap(modelBuilder.Entity<EditionInCategory>());
+            new CategoryMap(modelBuilder.Entity<Category>());
             
             base.OnModelCreating(modelBuilder);
         }
