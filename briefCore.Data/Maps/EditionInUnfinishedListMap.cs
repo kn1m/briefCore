@@ -19,7 +19,7 @@
 
             builder.HasOne(eu => eu.UnfinishedList)
                 .WithMany(ul => ul.EditionInUnfinishedLists)
-                .HasForeignKey(eu => eu.UnfinishedList)
+                .HasForeignKey(eu => eu.UnfinishedListId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.Property(eu => eu.Reason)

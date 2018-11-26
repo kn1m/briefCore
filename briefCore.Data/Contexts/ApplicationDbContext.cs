@@ -44,6 +44,7 @@
             new EditionInUnfinishedListMap(modelBuilder.Entity<EditionInUnfinishedList>());
             new EditionInWhishlistMap(modelBuilder.Entity<EditionInWhishlist>());
             new NotesFileMap(modelBuilder.Entity<NotesFile>());
+            new EditionTranslatedByMap(modelBuilder.Entity<EditionTranslatedBy>());
             
             base.OnModelCreating(modelBuilder);
         }
