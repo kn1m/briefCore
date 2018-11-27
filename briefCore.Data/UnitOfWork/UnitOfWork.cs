@@ -83,13 +83,9 @@
         }
 
         public ITranslatorRepository GetTranslatorRepository()
-        {
-            throw new System.NotImplementedException();
-        }
+            => _translatorRepository;
 
         public ICategoryRepository GetCategoryRepository()
-        {
-            throw new System.NotImplementedException();
-        }
+            => _categoryRepository;
     }
 }

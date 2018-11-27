@@ -47,6 +47,7 @@
             new EditionTranslatedByMap(modelBuilder.Entity<EditionTranslatedBy>());
             new EditionInCategoryMap(modelBuilder.Entity<EditionInCategory>());
             new CategoryMap(modelBuilder.Entity<Category>());
+            new TranslatorMap(modelBuilder.Entity<Translator>());
             
             base.OnModelCreating(modelBuilder);
         }
