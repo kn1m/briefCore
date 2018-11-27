@@ -134,8 +134,16 @@
 
         private void ConfigureIdentity(IServiceCollection services)
         {
+/*            IServiceScopeFactory scopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+        
+            using (IServiceScope scope = scopeFactory.CreateScope()) {
+                RoleManager<IdentityRole> roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+        
+                // Seed database code goes here
+            }*/
+            
             services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddEntityFrameworkStores<IdentityContext>()
                 .AddDefaultTokenProviders();            
         }
 

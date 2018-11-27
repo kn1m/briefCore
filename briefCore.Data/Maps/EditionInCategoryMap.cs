@@ -1,4 +1,4 @@
-namespace briefCore.Data
+namespace briefCore.Data.Maps
 {
     using Library.Entities;
     using Microsoft.EntityFrameworkCore;

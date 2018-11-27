@@ -17,10 +17,13 @@
                 cfg.AddProfiles(typeof(BookProfile).Assembly);
             }));
 
-            builder.Register(ctx => ctx.Resolve<MapperConfiguration>().CreateMapper()).As<IMapper>();
+            builder.Register(ctx => ctx.Resolve<MapperConfiguration>().CreateMapper())
+                .As<IMapper>()
+                .InstancePerLifetimeScope();
 
             builder.RegisterType<FileSystem>()
-                .As<IFileSystem>();
+                .As<IFileSystem>()
+                .InstancePerLifetimeScope();
             
             RegisterControllerDependencies(builder);
         }
