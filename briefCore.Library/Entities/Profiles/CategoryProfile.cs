@@ -1,7 +1,12 @@
 ﻿namespace briefCore.Library.Entities.Profiles
 {
-    public class CategoryProfile
+    using AutoMapper;
+
+    public class CategoryProfile : Profile
     {
-        
+        public CategoryProfile()
+        {
+            
+        }
     }
 }

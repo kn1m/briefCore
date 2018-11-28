@@ -4,10 +4,10 @@
     using System.Collections.Generic;
     using BaseEntities;
 
-    public class Whishlist : BaseEntity
+    public class Wishlist : BaseEntity
     {
         public Guid UserId { get; set; }
         
-        public List<EditionInWhishlist> EditionInWhishlists { get; set; }
+        public List<EditionInWishlist> EditionInWishlists { get; set; }
     }
 }

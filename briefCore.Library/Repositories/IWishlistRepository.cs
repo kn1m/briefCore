@@ -1,6 +1,6 @@
 ﻿namespace briefCore.Library.Repositories
 {
-    public interface IWhishlistRepository
+    public interface IWishlistRepository
     {
         
     }

@@ -72,8 +72,8 @@
                 .As<IDeviceRepository>();
             builder.RegisterType<UserDeviceRepository>()
                 .As<IUserDeviceRepository>();
-            builder.RegisterType<WhishlistRepository>()
-                .As<IWhishlistRepository>();
+            builder.RegisterType<WishlistRepository>()
+                .As<IWishlistRepository>();
             builder.RegisterType<UnfinishedRepository>()
                 .As<IUnfinishedRepository>();
             builder.RegisterType<ImportInfoRepository>()

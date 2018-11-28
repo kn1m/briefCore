@@ -2,9 +2,9 @@
 {
     using Library.Repositories;
     
-    public class WhishlistRepository : IWhishlistRepository
+    public class WishlistRepository : IWishlistRepository
     {
-        public WhishlistRepository()
+        public WishlistRepository()
         {
             
         }

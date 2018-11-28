@@ -36,12 +36,12 @@
             new DeviceMap(modelBuilder.Entity<Device>());
             new UserDeviceMap(modelBuilder.Entity<UserDevice>());
             new ImportInfoMap(modelBuilder.Entity<ImportInfo>());
-            new WhishlistMap(modelBuilder.Entity<Whishlist>());
+            new WhishlistMap(modelBuilder.Entity<Wishlist>());
             new UnfinishedListMap(modelBuilder.Entity<UnfinishedList>());
             new GenreMap(modelBuilder.Entity<Genre>());
             new BookInGenreMap(modelBuilder.Entity<BookInGenre>());
             new EditionInUnfinishedListMap(modelBuilder.Entity<EditionInUnfinishedList>());
-            new EditionInWhishlistMap(modelBuilder.Entity<EditionInWhishlist>());
+            new EditionInWishlistMap(modelBuilder.Entity<EditionInWishlist>());
             new NotesFileMap(modelBuilder.Entity<NotesFile>());
             new EditionTranslatedByMap(modelBuilder.Entity<EditionTranslatedBy>());
             new EditionInCategoryMap(modelBuilder.Entity<EditionInCategory>());

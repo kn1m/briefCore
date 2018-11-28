@@ -20,7 +20,7 @@
         public List<EditionFile> Files { get; set; }
         public List<Location> Locations { get; set; }
         public List<EditionInUnfinishedList> EditionInUnfinishedLists { get; set; }
-        public List<EditionInWhishlist> EditionInWhishlists { get; set; }
+        public List<EditionInWishlist> EditionInWhishlists { get; set; }
         public List<EditionTranslatedBy> EditionTranslatedBy { get; set; }
         public List<EditionInCategory> EditionInCategories { get; set; }
         public EditionType EditionType { get; set; }

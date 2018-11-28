@@ -6,7 +6,7 @@
 
     class WhishlistMap
     {
-        public WhishlistMap(EntityTypeBuilder<Whishlist> builder)
+        public WhishlistMap(EntityTypeBuilder<Wishlist> builder)
         {
             builder.ToTable("whishlist");
 
