@@ -1,6 +1,5 @@
 ﻿namespace briefCore.Library.Entities.Profiles
 {
-    using System;
     using AutoMapper;
     using Controllers.Models;
 
@@ -8,9 +7,7 @@
     {
         public DeviceProfile()
         {
-            CreateMap<DeviceModel, Device>()
-                .ForMember(d => d.Id, opt => opt.MapFrom(s => s.Id ?? Guid.NewGuid()));
-
+            CreateMap<DeviceModel, Device>();
             CreateMap<Device, DeviceModel>();            
         }
     }

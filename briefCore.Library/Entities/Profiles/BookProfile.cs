@@ -1,6 +1,5 @@
 ﻿namespace briefCore.Library.Entities.Profiles
 {
-    using System;
     using AutoMapper;
     using Controllers.Models;
     using Controllers.Models.RetrieveModels;
@@ -9,8 +8,7 @@
     {
         public BookProfile()
         {
-            CreateMap<BookModel, Book>()
-                .ForMember(d => d.Id, opt => opt.MapFrom(s => s.Id ?? Guid.NewGuid()));
+            CreateMap<BookModel, Book>();
 
             CreateMap<Book, BookModel>();
             CreateMap<Book, BookRetrieveModel>();
